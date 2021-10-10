@@ -6,8 +6,10 @@ def register():
     user_cuil = input("Ingrese su CUIL: ")
     try:
         int(user_cuil)
-    excpet ValueError:
+    except ValueError:
             print("El CUIL debe ser un número")
+            time.sleep(3)
+            os.system("cls")
             menu()
     user_cuil=int(user_cuil)
     with open("Database.csv","r",newline="") as t: 
