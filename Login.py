@@ -3,7 +3,13 @@ import os
 import pandas #se debe descargar esta libreria con pip install pandas en la terminal
 import time
 def register():
-    user_cuil = int(input("Ingrese su CUIL: "))  # Pendiente crear una excepcion si tira un string
+    user_cuil = input("Ingrese su CUIL: ")
+    try:
+        int(user_cuil)
+    excpet ValueError:
+            print("El CUIL debe ser un número")
+            menu()
+    user_cuil=int(user_cuil)
     with open("Database.csv","r",newline="") as t: 
         reader=csv.reader(t,delimiter=",")
         for i in reader:
