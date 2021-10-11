@@ -43,7 +43,7 @@ def register():
             register()
 df = pandas.read_csv(r"Database.csv")
 def login():
-    user_cuil=(input("Ingrese su CUIL: ")) #arreglar con exepcion si tira con un string
+    user_cuil=(input("Ingrese su CUIL: ")) 
     try:
         int(user_cuil)
     except ValueError:
