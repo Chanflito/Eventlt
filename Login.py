@@ -43,7 +43,15 @@ def register():
             register()
 df = pandas.read_csv(r"Database.csv")
 def login():
-    user_cuil=int(input("Ingrese su CUIL: ")) #arreglar con exepcion si tira con un string
+    user_cuil=(input("Ingrese su CUIL: ")) #arreglar con exepcion si tira con un string
+    try:
+        int(user_cuil)
+    except ValueError:
+            print("El CUIL debe ser un número")
+            time.sleep(3)
+            os.system("cls")
+            menu()
+    user_cuil=int(user_cuil)
     i = 0
     for a in df['CUIL']:
         if str(user_cuil) == str(a):
