@@ -1,7 +1,7 @@
 from abc import ABC
 
 class usuario(ABC):
-    def __init__(self, name, lastName, age, numTel, CUIL):
+    def __init__(self, name, lastName, age, CUIL):
         self.name = name
         self.lastName = lastName
         self.age = age
