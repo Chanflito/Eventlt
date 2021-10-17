@@ -21,3 +21,5 @@ class TestAdmin(unittest.TestCase):
         Susana.banCitizen(Armando)
         result=Armando.citizenBan
         self.assertTrue(result)
+if __name__=="__main__":
+    unittest.main()
