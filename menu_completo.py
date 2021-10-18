@@ -2,8 +2,23 @@ import csv
 import os
 import pandas #se debe descargar esta libreria con pip install pandas en la terminal
 import time
+from citizen import ciudadano
 from listadeCuidadanos import etlist
-from citizen import citizen
+
+
+def menu_o():
+    print ('Bienvenido a Eventlt')
+    menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor: '))
+
+    if menu_login == 1:
+        pass
+
+    elif menu_login == 2:
+        menu_login_citizen()
+
+    elif menu_login == 3:
+        pass
+
 
 def register():
     phonenumber=input("Ingrese su numero telefonico: (+54) ")
@@ -13,7 +28,7 @@ def register():
         print("Debe ingresar su numero telefonico correctamente")
         time.sleep(3)
         os.system("cls")
-        menu()
+        menu_login_citizen()
     user_cuil = input("Ingrese su CUIL: ")
     try:
         int(user_cuil)
@@ -21,7 +36,7 @@ def register():
         print("El CUIL debe ser un número")
         time.sleep(3)
         os.system("cls")
-        menu()
+        menu_login_citizen()
 
     df = pandas.read_csv(r"D:\Codigos\TP1Prog\Database.csv")
     for i in df['Phonenumber']:
@@ -29,14 +44,14 @@ def register():
             print ("Ya hay un usuario registrado con este numero telefonico")
             time.sleep(3)
             os.system("cls")
-            menu()
+            menu_login_citizen()
     
     for i in df['CUIL']:
         if str(i) == str(user_cuil):
             print ("Ya hay un usuario registrado con este CUIL")
             time.sleep(3)
             os.system("cls")
-            menu()
+            menu_login_citizen()
 
     counter = len(str(user_cuil))
 
@@ -57,7 +72,7 @@ def register():
         print ('Ingresaste numeros en tu nombre o apellido, intentelo denuevo')
         time.sleep(3)
         os.system("cls")
-        menu()
+        menu_login_citizen()
 
     try:
         age =input("cual es tu edad: ")
@@ -69,14 +84,14 @@ def register():
     if counter == 11 and password == password1 and counter2==11:
         with open(r"D:\Codigos\TP1Prog\Database.csv",mode="a",newline="") as h:
             writer=csv.writer(h,delimiter=",")
-            writer.writerow([user_cuil,password,phonenumber,name,surname])
-            citizen.create_citizen(name,surname,age, user_cuil)
-            ###############################################################################print(etlist.getcl())
-            print("su clase citizen fue creada exitosamente")
+            writer.writerow([user_cuil,password,phonenumber,name,surname,age])
+        ciudadano.create_citizen(name,surname,age, user_cuil,phonenumber)
+        print(etlist.getcl())
+        print("su clase citizen fue creada exitosamente")
         time.sleep(3)
         os.system("cls")
         h.close()
-        menu()    
+        menu_login_citizen()    
     elif counter != 11:
         print("Has ingresado el numero incorrecto de un CUIL.")
         time.sleep(3)
@@ -94,7 +109,6 @@ def register():
         register()
 
 
-
 def login():
     df = pandas.read_csv(r"D:\Codigos\TP1Prog\Database.csv")
     user_cuil=(input("Ingrese su CUIL: ")) 
@@ -104,7 +118,7 @@ def login():
         print("El CUIL debe ser un número")
         time.sleep(3)
         os.system("cls")
-        menu()
+        menu_login_citizen()
     user_cuil=int(user_cuil)
     i = 0
     for a in df['CUIL']:
@@ -115,7 +129,7 @@ def login():
             print('su CUIL no fue encontrado')
             time.sleep(3)
             os.system("cls")
-            menu()
+            menu_login_citizen()
             return i
     password = input("Ingrese su contraseña: ")
     if str(password) == str(df['Password'][i]):
@@ -124,18 +138,49 @@ def login():
         print("Contraseña invalida.")
         time.sleep(3)
         os.system("cls")
-        menu()
+        menu_login_citizen()
 
-def menu():
-    print ("Bienvenido a Eventlt")
-    user=int(input("1.Log in | 2. Registrarse | 3.Salir : "))
+
+def menu_login_citizen():
+    print ("porfavor, seleccione una de las siguentes opciones")
+    try:
+        user=int(input("1.Log in | 2. Registrarse | 3.Salir : "))
+    except ValueError:
+        print('eso no es un numero, intentelo nuevamente')
+        menu_login_citizen()
     if user == 1:
         login()
     elif user==2:
         register()
     elif user==3:
-        return "salir"
+        menu_o()
     else:
         print ("Debes ingresar los numeros indicados anteriormente.")
-        menu()
-menu()
+        menu_login_citizen()
+
+
+def log_adm():
+    df = pandas.read_csv(r"D:\Codigos\TP1Prog\Base_Adm.csv") #va el path csv de administradores
+    admin_user=input("Ingrese su nombre de usuario como admnistrador: ")
+    i = 0
+    for a in df['Admin_user']:
+        if str(admin_user) == str(a):
+            break
+        i += 1
+    if i == len(df["Admin_user"]):
+        print('su nombre no esta como usuario, volviendo al menu principal.')
+        time.sleep(3)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        menu_o()
+        return i
+    admin_password=input('Ingrese su contraseña: ')
+    if str(admin_password) == str(df['Password'][i]):
+        print(f"usted ingreso como {admin_user}, bienvenido")
+    else:
+        print("Contraseña invalida, volviendo al menu principal.")
+        time.sleep(3)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        menu_o()
+
+
+menu_o()

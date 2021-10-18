@@ -1,24 +1,29 @@
 from usuario import usuario as user
-from listadeCuidadanos import etlist
 
-class citizen(user):
-    def __init__(self, name, lastName, age, CUIL):
+
+class ciudadano(user):
+    def __init__(self, name, lastName, age, CUIL, phoneNumber):
         super().__init__(name, lastName, age, CUIL)
+        self.phoneNumber = phoneNumber
         self.coordenates = []
         self.involvedEvents = []
         self.citizenBan = False
 
-    @classmethod
-    def create_citizen(cls, name, lastName, age, CUIL):
-         cls.CUIL = cls(name, lastName, age, CUIL)
-         etlist.addCitizen(citizen)
-         return cls.CUIL
-        
-        #append to citicen class (not created yet)
-        
+    @staticmethod
+    def create_citizen(name, lastName, age, CUIL, phoneNumber):
+        from listadeCuidadanos import etlist
+        x = ciudadano(name, lastName, age, CUIL, phoneNumber)
+        etlist.addCitizen(x)
+
+    @staticmethod
+    def init_citizen_creation(name, lastName, age, CUIL, phoneNumber):
+        x = ciudadano(name, lastName, age, CUIL, phoneNumber)
+        return x
 
     def asistEvent(self):
         pass
 
     def unAsistEvent(self):
-        pass
+        pass #apens
+
+

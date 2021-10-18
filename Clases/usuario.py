@@ -5,8 +5,8 @@ class usuario(ABC):
         self.name = name
         self.lastName = lastName
         self.age = age
-        self.numTel = numTel
         self.CUIL = CUIL
+        
     def __str__(self):
         return self.name + " " + self.lastName
         

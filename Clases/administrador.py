@@ -1,8 +1,8 @@
-from usuario import usuario as user
-from listadeCuidadanos import etlist
-class administrator(user):
-    def __init__(self, name, lastName, age, CUIL):
-        super().__init__(name, lastName, age, CUIL)
+
+class administrator():
+  
+    def __init__(self, user):
+        self.user = user
 
     def addEvent(self):
         pass
