@@ -20,5 +20,9 @@ class Mapa():
         icon=folium.Icon(color=evento["Ocurrencia"]), 
         popup=evento["Cantidad de gente"]).add_to(mapita)                                  
     mapita.save(os.path.abspath(variable))
-    def show_map():
-        return os.system("index.html")
+    def show_map ():
+        if sys.platform == "win32":
+            return os.startfile("index.html")
+        else:
+            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            return subprocess.call([opener, "index.html"])
