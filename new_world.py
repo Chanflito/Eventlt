@@ -22,7 +22,7 @@ class Mapa():
     mapita.save(os.path.abspath(variable))
     def show_map ():
         if sys.platform == "win32":
-            return os.startfile("index.html")
+            return os.startfile("index.html") #Open map with Windows System.
         else:
-            opener = "open" if sys.platform == "darwin" else "xdg-open"
+            opener = "open" if sys.platform == "darwin" else "xdg-open" #Open map wtih OSX system.
             return subprocess.call([opener, "index.html"])
