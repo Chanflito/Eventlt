@@ -21,7 +21,7 @@ def menu_o():
         new_world.Mapa.show_map()
         volver=int(input("1.Volver al menu | 2. Cerrar programa: "))
         if volver==1:
-            menu_o
+            menu_o()
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
 
