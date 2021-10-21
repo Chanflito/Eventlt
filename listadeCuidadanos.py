@@ -7,11 +7,11 @@ class CitizenList():
     def __init__ (self):
         self.citizenlist=[]
         self.BannedCitizenList=[]
-#         df = pandas.read_csv(os.path.abspath("Database.csv"))
-#         i = 0
-#         while i != len(df['CUIL']):
-#             self.citizenlist.append(creadordeciudadano.init_citizen_creation(df['name'][i], df['surname'][i], df['age'][i], df['CUIL'][i], df['Phonenumber'][i]))
-#             i += 1
+        df = pandas.read_csv(os.path.abspath("Database.csv"))
+        i = 0
+        while i != len(df['CUIL']):
+            self.citizenlist.append(creadordeciudadano.init_citizen_creation(df['Name'][i], df['Surname'][i], df['age'][i], df['CUIL'][i], df['Phonenumber'][i]))
+            i += 1
             
     def addCitizen(self, citizen):
         self.citizenlist.append(citizen)
