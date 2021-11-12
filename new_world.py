@@ -1,6 +1,7 @@
 import folium
 import pandas as pd
 import os
+import sys , subprocess
 variable="index.html"
 variable2="Eventos.csv"
 eventos = pd.read_csv(os.path.abspath(variable2))
