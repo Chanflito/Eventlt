@@ -1,3 +1,4 @@
+from listadeCuidadanos import etlist
 
 class administrator():
   
@@ -11,7 +12,6 @@ class administrator():
         citizen.citizenBan=True
         etlist.addBannedCitizen(citizen)
         
-
     def unbanCitizen(self,citizen):
         citizen.citizenBan=False
         etlist.removeBannedCitizen(citizen)

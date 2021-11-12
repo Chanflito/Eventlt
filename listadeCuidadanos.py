@@ -26,7 +26,7 @@ class CitizenList():
                 del self.BannedCitizenList[i]
                 return self.BannedCitizenList
             else:
-                i=i+1
+                i += 1
 
     def getcl(self):
         return(self.citizenlist)

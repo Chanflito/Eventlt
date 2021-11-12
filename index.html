@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4ad70889fdfc48b4be4a524edc74ed2b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_4ad70889fdfc48b4be4a524edc74ed2b" ></div>
+        
+</body>
+<script>    
+    
+            var map_4ad70889fdfc48b4be4a524edc74ed2b = L.map(
+                "map_4ad70889fdfc48b4be4a524edc74ed2b",
+                {
+                    center: [-36.8939975, -60.3227331],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_571ec33545e14c39a840f3e0b2e85c55 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var marker_0f52e0b50f13461fbd9fc25b73a0b2f1 = L.marker(
+                [-34.603, -58.381],
+                {}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var icon_dc158ef92c22421fb5a56cb615ee8941 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_0f52e0b50f13461fbd9fc25b73a0b2f1.setIcon(icon_dc158ef92c22421fb5a56cb615ee8941);
+        
+    
+        var popup_40151994b448481bb945b296a9168922 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_67acb2c78ca34879b52948cc4ec4c956 = $(`<div id="html_67acb2c78ca34879b52948cc4ec4c956" style="width: 100.0%; height: 100.0%;">gente en la zona: 10<br>         hola<br>         3rd line</div>`)[0];
+            popup_40151994b448481bb945b296a9168922.setContent(html_67acb2c78ca34879b52948cc4ec4c956);
+        
+
+        marker_0f52e0b50f13461fbd9fc25b73a0b2f1.bindPopup(popup_40151994b448481bb945b296a9168922)
+        ;
+
+        
+    
+    
+            marker_0f52e0b50f13461fbd9fc25b73a0b2f1.bindTooltip(
+                `<div>
+                     Buenos Aires
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8b0b4a2f2af349d483cc23494d1bf474 = L.marker(
+                [-38.555, -58.725],
+                {}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var icon_e682e2adb39e47a194285506e982d115 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8b0b4a2f2af349d483cc23494d1bf474.setIcon(icon_e682e2adb39e47a194285506e982d115);
+        
+    
+        var popup_aca9d60a9c9b4affa86ed87d13b0a9d7 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_18bed07a987d45d5a5ff1ea7b1a4370e = $(`<div id="html_18bed07a987d45d5a5ff1ea7b1a4370e" style="width: 100.0%; height: 100.0%;">gente en la zona: 5<br>         hola<br>         3rd line</div>`)[0];
+            popup_aca9d60a9c9b4affa86ed87d13b0a9d7.setContent(html_18bed07a987d45d5a5ff1ea7b1a4370e);
+        
+
+        marker_8b0b4a2f2af349d483cc23494d1bf474.bindPopup(popup_aca9d60a9c9b4affa86ed87d13b0a9d7)
+        ;
+
+        
+    
+    
+            marker_8b0b4a2f2af349d483cc23494d1bf474.bindTooltip(
+                `<div>
+                     Necochea
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_39852fec310b41c398068912fd4acf97 = L.marker(
+                [-37.996, -57.549],
+                {}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var icon_bf4d3e9e851e469289b808974c6acfa9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_39852fec310b41c398068912fd4acf97.setIcon(icon_bf4d3e9e851e469289b808974c6acfa9);
+        
+    
+        var popup_07c8fb2afa694caaab0bb454cddd177a = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_41994543c2a3470fa1a04604283d1dec = $(`<div id="html_41994543c2a3470fa1a04604283d1dec" style="width: 100.0%; height: 100.0%;">gente en la zona: 3<br>         hola<br>         3rd line</div>`)[0];
+            popup_07c8fb2afa694caaab0bb454cddd177a.setContent(html_41994543c2a3470fa1a04604283d1dec);
+        
+
+        marker_39852fec310b41c398068912fd4acf97.bindPopup(popup_07c8fb2afa694caaab0bb454cddd177a)
+        ;
+
+        
+    
+    
+            marker_39852fec310b41c398068912fd4acf97.bindTooltip(
+                `<div>
+                     Mar del Plata
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_237197d0daed42c78edbbbfcbc745ea1 = L.marker(
+                [-34.4570918, -58.9141609],
+                {}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var icon_f7835303355444d8904e57dd14a538d7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_237197d0daed42c78edbbbfcbc745ea1.setIcon(icon_f7835303355444d8904e57dd14a538d7);
+        
+    
+        var popup_b932c03988bd41988e84715fd2e36ab0 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_5db1db7e4c39468988f73e6808f7dd09 = $(`<div id="html_5db1db7e4c39468988f73e6808f7dd09" style="width: 100.0%; height: 100.0%;">gente en la zona: 1<br>         hola<br>         3rd line</div>`)[0];
+            popup_b932c03988bd41988e84715fd2e36ab0.setContent(html_5db1db7e4c39468988f73e6808f7dd09);
+        
+
+        marker_237197d0daed42c78edbbbfcbc745ea1.bindPopup(popup_b932c03988bd41988e84715fd2e36ab0)
+        ;
+
+        
+    
+    
+            marker_237197d0daed42c78edbbbfcbc745ea1.bindTooltip(
+                `<div>
+                     Pilar
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5068d2e7809c4679992017e99d02a296 = L.marker(
+                [-34.0954713, -59.0245097],
+                {}
+            ).addTo(map_4ad70889fdfc48b4be4a524edc74ed2b);
+        
+    
+            var icon_f93d659e98954a3baf558d34cf547a3d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_5068d2e7809c4679992017e99d02a296.setIcon(icon_f93d659e98954a3baf558d34cf547a3d);
+        
+    
+        var popup_f23eeac304c64bf9a1bff389572b016a = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_49ecd2d382e04d69b583a75ee41728ef = $(`<div id="html_49ecd2d382e04d69b583a75ee41728ef" style="width: 100.0%; height: 100.0%;">gente en la zona: 30<br>         hola<br>         3rd line</div>`)[0];
+            popup_f23eeac304c64bf9a1bff389572b016a.setContent(html_49ecd2d382e04d69b583a75ee41728ef);
+        
+
+        marker_5068d2e7809c4679992017e99d02a296.bindPopup(popup_f23eeac304c64bf9a1bff389572b016a)
+        ;
+
+        
+    
+    
+            marker_5068d2e7809c4679992017e99d02a296.bindTooltip(
+                `<div>
+                     Zarate
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
