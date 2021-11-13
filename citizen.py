@@ -1,5 +1,6 @@
 from usuario import usuario as user
-
+from pandas import pandas
+import os
 
 class ciudadano(user):
     def __init__(self, name, lastName, age, CUIL, phoneNumber):
