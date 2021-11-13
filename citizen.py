@@ -6,7 +6,7 @@ class ciudadano(user):
     def __init__(self, name, lastName, age, CUIL, phoneNumber):
         super().__init__(name, lastName, age, CUIL)
         self.phoneNumber = phoneNumber
-        self.coordenates = []
+        self.zone = -1
         self.involvedEvents = []
         self.citizenBan = False
     friends=[]
@@ -47,3 +47,7 @@ class ciudadano(user):
                 print (f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos.")
             else:
                 print ("La persona no se encuentra el database del Anses.")
+
+    def change_zone(self, num):
+        self.zone = num
+        return num

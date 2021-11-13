@@ -22,6 +22,7 @@ class Mapa():
             return "orange"
         else:
             return "red"           ########################################################################## se tiene que modificar
+    
     eventos["Ocurrencia"] = eventos.apply(ocurrencia, axis=1)    
     mapita = folium.Map(location=[-36.8939975,-60.3227331], zoom_start=7)
     i = 0

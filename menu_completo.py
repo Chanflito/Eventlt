@@ -9,7 +9,7 @@ import new_world
 
 def menu_o():
     print ('Bienvenido a Eventlt')
-    menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor: '))
+    menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
 
     if menu_login == 1:
         log_adm()
@@ -24,6 +24,8 @@ def menu_o():
             menu_o()
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
+    else:
+        os.system('cls' if os.name == 'nt' else 'clear')
 
 def register():
     phonenumber=input("Ingrese su numero telefonico: (+54) ")
@@ -122,7 +124,6 @@ def register():
 
         register()
 
-
 def login():
     df = pandas.read_csv(os.path.abspath("Database.csv"))
     user_cuil=(input("Ingrese su CUIL: ")) 
@@ -149,14 +150,14 @@ def login():
             return i
     password = input("Ingrese su contraseña: ")
     if str(password) == str(df['Password'][i]):
-        print("Bienvenido a Eventlt.")
+        print("Bienvenido a Eventlt.\n\n")
+        menu_citizen(i) #<---- esto linkea al menu de las acciones del ciudadano
     else:
         print("Contraseña invalida.")
         time.sleep(3)
         os.system('cls' if os.name == 'nt' else 'clear')
 
         menu_login_citizen()
-
 
 def menu_login_citizen():
     print ("Porfavor, seleccione una de las siguentes opciones")
@@ -174,6 +175,35 @@ def menu_login_citizen():
     else:
         print ("Debes ingresar los numeros indicados anteriormente.")
         menu_login_citizen()
+
+def listadoZonas(eventos):
+    
+    zonitas = ''
+    i = 0 
+    for zona in eventos['Nombre']:
+        zonitas += f'{i} |' + zona + '\n'
+        i += 1
+    return zonitas
+
+def menu_citizen(i):
+    df = pandas.read_csv(os.path.abspath("Database.csv"))
+    seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
+    for a in etlist.citizenlist:
+        if int(df['CUIL'][i]) == int(a.CUIL):
+            x = a
+    if x.zone == -1:
+        b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
+        if b > (len(seconddf['Nombre']) - 1):
+            print('este numero no es valido, vuelva a intentarlo')
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            menu_citizen(i)
+        else:
+            print('muchas gracias!')
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+        x.zone = b
+    c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos')) # SOLO PUEDE SER UN NUMERO
 
 
 def log_adm():
@@ -198,4 +228,11 @@ def log_adm():
         time.sleep(3)
         os.system('cls' if os.name == 'nt' else 'clear')
         menu_o()
+
+def menu_administrador():
+    pass
+
+def friends_menu():
+    pass
+
 menu_o()
