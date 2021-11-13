@@ -30,24 +30,20 @@ class ciudadano(user):
     
     def añadir_amigo(self):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
-        name_persona=input("Ingrese el nombre de la persona: ")
-        surname_persona=input("Ingrese el apellido de la persona: ")
-        check_name=False
-        check_surname=False
-        for i in df["Name"]:
-            if str(i)==str(name_persona):
-                check_name=True
+        friend_cuil=int(input("Ingrese el Cuil de la persona que quieres añadir a tu lista de amigos: "))
+        Check_cuil=False
+        i=0
+        for a in df['CUIL']:
+            if str(a)==str(friend_cuil):
+                Check_cuil=True
                 break
-        for z in df["Surname"]:
-            if str(z)==str(surname_persona):
-                check_surname=True
-                break
+            i+=1
 
-        if [name_persona,surname_persona] in ciudadano.friends:
+        if [friend_cuil] in ciudadano.friends:
             print ("La persona ya se encuentra en tu lista de amigos")
         else:
-            if check_name==True and check_surname==True:
-                ciudadano.friends.append([name_persona,surname_persona])
-                print (f"La persona llamada {name_persona} {surname_persona} fue agregada exitosamente.")
+            if Check_cuil==True:
+                ciudadano.friends.append([friend_cuil])
+                print (f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos.")
             else:
                 print ("La persona no se encuentra el database del Anses.")
