@@ -29,7 +29,7 @@ class menuCompleto:
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
 ############################################################################################################## menu secreto autistico
-            elif menu_login ==5:
+            elif menu_login == 69 or menu_login == 420:
                 randnum = random.randint(1, 7)
                 if randnum == 1:
                     webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
