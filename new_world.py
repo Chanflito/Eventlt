@@ -28,7 +28,7 @@ class Mapa():
     i = 0
     for _, evento in eventos.iterrows():
         texto= f'''gente en la zona: {evento["Cantidad de gente"]}<br>
-        {popupHelper(i)}'''      #todo lo que yo agregue adentro del f'', va a imprimirse en el popup del mapa
+        {popupHelper(i)}'''      #todo lo que yo agregue adentro del f'''   ''', va a imprimirse en el popup del mapa
         folium.Marker(location=[float(evento["Latitud"]), float(evento["Longitud"])],
         tooltip=(evento["Nombre"]), 
         icon=folium.Icon(color=evento["Ocurrencia"]), 
