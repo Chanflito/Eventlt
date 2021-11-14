@@ -40,13 +40,13 @@ class ciudadano(user):
             i+=1
 
         if [friend_cuil] in ciudadano.friends:
-            print ("La persona ya se encuentra en tu lista de amigos")
+            return ("La persona ya se encuentra en tu lista de amigos")
         else:
             if Check_cuil==True:
                 ciudadano.friends.append([friend_cuil])
-                print (f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos.")
+                return f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos."
             else:
-                print ("La persona no se encuentra el database del Anses.")
+                return "La persona no se encuentra el database del Anses."
 
     def change_zone(self, num):
         self.zone = num
