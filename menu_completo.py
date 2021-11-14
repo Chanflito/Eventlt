@@ -100,7 +100,7 @@ class menuCompleto:
                 writer.writerow([user_cuil,password,phonenumber,name,surname,age])
             ciudadano.create_citizen(name,surname,age, user_cuil,phonenumber)
             print(etlist.getcl())
-            print("Su clase citizen fue creada exitosamente")
+            # print("Su clase citizen fue creada exitosamente")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -178,16 +178,7 @@ class menuCompleto:
         else:
             print ("Debes ingresar los numeros indicados anteriormente.")
             menuCompleto.menu_login_citizen()
-
-    @staticmethod
-    def listadoZonas(eventos):
-        
-        zonitas = ''
-        i = 0 
-        for zona in eventos['Nombre']:
-            zonitas += f'{i} |' + zona + '\n'
-            i += 1
-        return zonitas
+    
     @staticmethod
     def menu_citizen(i):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
@@ -196,7 +187,7 @@ class menuCompleto:
             if int(df['CUIL'][i]) == int(a.CUIL):
                 x = a
         if x.zone == -1:
-            b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
+            b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
             if b > (len(seconddf['Nombre']) - 1):
                 print('este numero no es valido, vuelva a intentarlo')
                 time.sleep(3)
@@ -240,6 +231,16 @@ class menuCompleto:
     @staticmethod
     def friends_menu():
         pass
+
+class registroDeZonas:
+    @staticmethod
+    def listadoZonas(eventos):  
+        zonitas = ''
+        i = 0 
+        for zona in eventos['Nombre']:
+            zonitas += f'{i} |' + zona + '\n'
+            i += 1
+        return zonitas
 
 
 menuCompleto.menu_o()
