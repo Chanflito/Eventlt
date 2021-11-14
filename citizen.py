@@ -1,6 +1,6 @@
 from usuario import usuario as user
 #import os
-from listadeCuidadanos import etlist
+
 
 class ciudadano(user):
     def __init__(self, name, lastName, age, CUIL, phoneNumber):
@@ -15,6 +15,7 @@ class ciudadano(user):
 
     @classmethod
     def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
+        from listadeCuidadanos import etlist
         x = ciudadano(name, lastName, age, CUIL, phoneNumber)
         etlist.addCitizen(x)
 
@@ -30,6 +31,7 @@ class ciudadano(user):
         pass #apens
     
     def enviar_solicitud(self, friend_cuil):
+        from listadeCuidadanos import etlist
         Check_cuil=False
         i=0
         for a in etlist.citizenlist:
