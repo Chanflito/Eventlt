@@ -5,6 +5,8 @@ import time
 from citizen import ciudadano
 from listadeCuidadanos import etlist
 import new_world
+import webbrowser
+import random
 
 class menuCompleto:
     @staticmethod
@@ -26,6 +28,28 @@ class menuCompleto:
                     menuCompleto.menu_o()
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
+############################################################################################################## menu secreto autistico
+            elif menu_login ==5:
+                randnum = random.randint(1, 7)
+                if randnum == 1:
+                    webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
+                elif randnum == 2:
+                    webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
+                elif randnum == 3:
+                    webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
+                elif randnum == 4:
+                    webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
+                elif randnum == 5:
+                    webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
+                elif randnum == 6:
+                    webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
+                elif randnum == 7:
+                    webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
+                elif randnum == 8:
+                    webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
+                menuCompleto.menu_o()
+
+#######################################################################################################################################
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
         except ValueError:
@@ -204,7 +228,13 @@ class menuCompleto:
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
             x.zone = b
-        c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona')) # SOLO PUEDE SER UN NUMERO
+        try:
+            c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona: ')) # SOLO PUEDE SER UN NUMERO
+        except ValueError:
+            print ('Debe ingresar un numero')
+            time.sleep(3)
+            os.system('cls' if os.name== 'nt' else 'clear')
+            menuCompleto.menu_citizen(i)
         if c == 1:
             pass
         elif c == 2:
@@ -213,7 +243,7 @@ class menuCompleto:
             pass
         elif c == 4:
             pass
-    
+        
     @staticmethod
     def log_adm():
         df = pandas.read_csv(os.path.abspath("Base_Adm.csv")) #va el path csv de administradores
