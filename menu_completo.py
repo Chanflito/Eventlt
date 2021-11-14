@@ -14,16 +14,16 @@ class menuCompleto:
             menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
 
             if menu_login == 1:
-                log_adm()
+                menuCompleto.log_adm()
 
             elif menu_login == 2:
-                menu_login_citizen()
+                menuCompleto.menu_login_citizen()
 
             elif menu_login == 3:
                 new_world.Mapa.show_map()
                 volver=int(input("1.Volver al menu | 2. Cerrar programa: "))
                 if volver==1:
-                    menu_o()
+                    menuCompleto.menu_o()
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
             else:
@@ -31,7 +31,7 @@ class menuCompleto:
         except ValueError:
             print ('Para salir del programa debe presionar un numero.')
             time.sleep(3)
-            menu_o()
+            menuCompleto.menu_o()
         
     @staticmethod
     def register():
@@ -205,7 +205,15 @@ class menuCompleto:
                 os.system('cls' if os.name == 'nt' else 'clear')
             x.zone = b
         c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona')) # SOLO PUEDE SER UN NUMERO
-
+        if c == 1:
+            pass
+        elif c == 2:
+            pass
+        elif c == 3:
+            pass
+        elif c == 4:
+            pass
+    
     @staticmethod
     def log_adm():
         df = pandas.read_csv(os.path.abspath("Base_Adm.csv")) #va el path csv de administradores
