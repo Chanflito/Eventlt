@@ -9,24 +9,30 @@ import new_world
 class menuCompleto:
     @staticmethod
     def menu_o():
-        print ('Bienvenido a Eventlt')
-        menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
+        try:
+            print ('Bienvenido a Eventlt')
+            menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
 
-        if menu_login == 1:
-            menuCompleto.log_adm()
+            if menu_login == 1:
+                log_adm()
 
-        elif menu_login == 2:
-            menuCompleto.menu_login_citizen()
+            elif menu_login == 2:
+                menu_login_citizen()
 
-        elif menu_login == 3:
-            new_world.Mapa.show_map()
-            volver=int(input("1.Volver al menu | 2. Cerrar programa: "))
-            if volver==1:
-                menuCompleto.menu_o()
+            elif menu_login == 3:
+                new_world.Mapa.show_map()
+                volver=int(input("1.Volver al menu | 2. Cerrar programa: "))
+                if volver==1:
+                    menu_o()
+                else:
+                    os.system('cls' if os.name == 'nt' else 'clear')
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
-        else:
-            os.system('cls' if os.name == 'nt' else 'clear')
+        except ValueError:
+            print ('Para salir del programa debe presionar un numero.')
+            time.sleep(3)
+            menu_o()
+        
     @staticmethod
     def register():
         phonenumber=input("Ingrese su numero telefonico: (+54) ")
