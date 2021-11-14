@@ -11,14 +11,14 @@ class ciudadano(user):
         self.citizenBan = False
     friends=[]
 
-    @staticmethod
-    def create_citizen(name, lastName, age, CUIL, phoneNumber):
+    @classmethod
+    def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
         from listadeCuidadanos import etlist
         x = ciudadano(name, lastName, age, CUIL, phoneNumber)
         etlist.addCitizen(x)
 
-    @staticmethod
-    def init_citizen_creation(name, lastName, age, CUIL, phoneNumber):
+    @classmethod
+    def init_citizen_creation(cls, name, lastName, age, CUIL, phoneNumber):
         x = ciudadano(name, lastName, age, CUIL, phoneNumber)
         return x
 

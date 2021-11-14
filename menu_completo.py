@@ -198,7 +198,7 @@ class menuCompleto:
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
             x.zone = b
-        c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos')) # SOLO PUEDE SER UN NUMERO
+        c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona')) # SOLO PUEDE SER UN NUMERO
 
     @staticmethod
     def log_adm():
