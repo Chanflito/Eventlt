@@ -9,7 +9,7 @@ class ciudadano(user):
         self.zone = -1
         self.involvedEvents = []
         self.citizenBan = False
-    friends=[]
+        self.friends=[]
 
     @classmethod
     def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
@@ -39,11 +39,11 @@ class ciudadano(user):
                 break
             i+=1
 
-        if [friend_cuil] in ciudadano.friends:
+        if [friend_cuil] in self.friends:
             return ("La persona ya se encuentra en tu lista de amigos")
         else:
             if Check_cuil==True:
-                ciudadano.friends.append([friend_cuil])
+                self.friends.append([friend_cuil])
                 return f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos."
             else:
                 return "La persona no se encuentra el database del Anses."
