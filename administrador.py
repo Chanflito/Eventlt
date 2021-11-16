@@ -11,8 +11,8 @@ class administrator():
     def mandar_a_revision(cls,citizen):
         cls.listaderevision.append(citizen)
 
-    def addEvent(self, location, description):
-        eventos.eventCreator(location, description)
+    def addEvent(self, location, nombre, descripcion, latitud, longitud):
+        print(eventos.eventCreator(location, nombre, descripcion, latitud, longitud))
 
     @staticmethod
     def banCitizen(citizen):
