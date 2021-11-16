@@ -1,3 +1,6 @@
 from menu_completo import MainMenu
-menu=MainMenu()
-menu.menu_o()
+from listadeCuidadanos import etlist
+
+MainMenu.menu_o()
+print(etlist.BannedCitizenList)
+print(etlist.citizenlist)
