@@ -1,6 +1,4 @@
 from usuario import usuario as user
-#import os
-from administrador import admin_bot
 
 class ciudadano(user):
     def __init__(self, name, lastName, age, CUIL, phoneNumber):
@@ -49,7 +47,7 @@ class ciudadano(user):
         for cuil in self.rechazado:
             banCheck = self.rechazado.count(cuil)
             if  banCheck >= 5:
-                admin_bot.banCitizen(self)
+                # admin_bot.banCitizen(self)
                 return "tu cuenta ha sido bloqueada por mandar multiples solicitudes a la misma persona"
 
         if Check_cuil==True:

@@ -16,5 +16,3 @@ class administrator():
     def unbanCitizen(self,citizen):
         citizen.citizenBan=False
         etlist.removeBannedCitizen(citizen)
-
-admin_bot = administrator("bobot")
