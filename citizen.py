@@ -11,6 +11,9 @@ class ciudadano(user):
         self.solicitudes=[]
         self.quien_me_rechazo = []
 
+    def __repr__(self):
+        return self.name + " " + self.lastName
+    
     @classmethod
     def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
         from listadeCuidadanos import etlist
