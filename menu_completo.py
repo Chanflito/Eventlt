@@ -8,7 +8,7 @@ import webbrowser
 import random
 from listadeCuidadanos import etlist
 from administrador import administrator
-
+from revisionlist import defualt_revision_list
 
 class MainMenu:
     @staticmethod
@@ -247,7 +247,8 @@ class MainMenu:
             menu_amigos.friends_menu(citizenidentifier)
         elif c == 4:
             registroDeZonas.listadoZonas(seconddf)
-            num = ("a que zona quiere cambiar?\n")
+            print(registroDeZonas.listadoZonas(seconddf))
+            num = int(input("a que zona quiere cambiar?\n"))
             x.change_zone(num)
             print('su zona se actualizo correctamente')
             MainMenu.menu_citizen(citizenidentifier)
@@ -278,22 +279,42 @@ class MainMenu:
             MainMenu.menu_o()
 
 class menu_administrador():
+    revisionlist=[]
+
     @staticmethod
     def Bienvenido():
-        choice = int(
-            input("Elija una de las siguientes opciones:1-Volver al menu principal| 2-Bannear| 3-remover Ban:"))
+        choice = int(input("Elija una de las siguientes opciones:1-Volver al menu principal| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
         if choice == 1:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_o()
+
         if choice == 2:
             return menu_administrador.BanCitizen()
+
         if choice == 3:
             return menu_administrador.UnBanCitizen()
 
+        if choice == 4:
+            defualt_revision_list.update_revision_list()
+            print(defualt_revision_list.getlist())
+            citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
+            ban_choice = str(input("Quiere bannear al citizen? si/no: "))
+            chosen_citizen=defualt_revision_list.revision_list[citizenindex]
+            if ban_choice=="si":
+                administrator.banCitizen(chosen_citizen)
+                print("El usuario fue banneado")
+                return menu_administrador.Bienvenido()
+            else:
+                defualt_revision_list.remove(chosen_citizen)
+                chosen_citizen.quien_me_rechazo=[]
+                print("El ciudadano fue removido de la lista de revision")
+                return menu_administrador.Bienvenido()
+
+
     @staticmethod
     def BanCitizen():
-        usuarioseleccionado = int(input("A quien desea bannear?"))
+        usuarioseleccionado = int(input("A quien desea bannear? "))
         for usuarios in etlist.citizenlist:
             if usuarios.CUIL == usuarioseleccionado and usuarios.citizenBan == False:
                 administrator.banCitizen(usuarios)
@@ -312,6 +333,13 @@ class menu_administrador():
                 return menu_administrador.Bienvenido()
         print("Usuario no encontrado")
         return menu_administrador.Bienvenido()
+
+    @classmethod
+    def update_revision_list(cls):
+        for citizen in etlist.citizenlist:
+            if len(citizen.quien_me_rechazo)==5:
+                cls.revisionlist.append(citizen)
+
 
 class menu_amigos:
 
