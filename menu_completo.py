@@ -4,59 +4,63 @@ import pandas #se debe descargar esta libreria con pip install pandas en la term
 import time
 from citizen import ciudadano
 import new_world
-# import webbrowser
-# import random
+import webbrowser
+import random
 from listadeCuidadanos import etlist
+from administrador import administrator
+
 
 class MainMenu:
-    def menu_o(self):
+    @staticmethod
+    def menu_o():
         try:
             print ('Bienvenido a Eventlt')
             menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
 
             if menu_login == 1:
-                self.log_adm()
+                MainMenu.log_adm()
 
             elif menu_login == 2:
-                self.menu_login_citizen()
+                MainMenu.menu_login_citizen()
 
             elif menu_login == 3:
                 new_world.Mapa.show_map()
                 go_back = int(input("1.Volver al menu | 2. Cerrar programa: "))
                 if go_back ==1 :
-                    self.menu_o()
+                    MainMenu.menu_o()
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
-# ############################################################################################################## menu secreto autistico
-#             elif menu_login == 69 or menu_login == 420:
-#                 randnum = random.randint(1, 7)
-#                 if randnum == 1:
-#                     webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
-#                 elif randnum == 2:
-#                     webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
-#                 elif randnum == 3:
-#                     webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
-#                 elif randnum == 4:
-#                     webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
-#                 elif randnum == 5:
-#                     webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
-#                 elif randnum == 6:
-#                     webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
-#                 elif randnum == 7:
-#                     webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
-#                 elif randnum == 8:
-#                     webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
-#                 self.menu_o()
+############################################################################################################## menu secreto autistico
+            elif menu_login == 69 or menu_login == 420:
+                randnum = random.randint(1, 7)
+                if randnum == 1:
+                    webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
+                elif randnum == 2:
+                    webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
+                elif randnum == 3:
+                    webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
+                elif randnum == 4:
+                    webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
+                elif randnum == 5:
+                    webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
+                elif randnum == 6:
+                    webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
+                elif randnum == 7:
+                    webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
+                elif randnum == 8:
+                    webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
+                MainMenu.menu_o()
 
-# #######################################################################################################################################
+#######################################################################################################################################
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
         except ValueError:
             print ('Para salir del programa debe presionar un numero.')
             time.sleep(3)
-            self.menu_o()
+            MainMenu.menu_o()
 
-    def register(self):
+    @staticmethod
+    def register():
         phone_number=input("Ingrese su numero telefonico: (+54) ")
         try:
             int(phone_number)
@@ -65,7 +69,7 @@ class MainMenu:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
         user_cuil = input("Ingrese su CUIL: ")
         try:
             int(user_cuil)
@@ -73,7 +77,7 @@ class MainMenu:
             print("El CUIL debe ser un número")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
 
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         for numbers in df['Phonenumber']:
@@ -82,7 +86,7 @@ class MainMenu:
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
 
-                self.menu_login_citizen()
+                MainMenu.menu_login_citizen()
         
         for CUILnumbers in df['CUIL']:
             if str(CUILnumbers) == str(user_cuil):
@@ -90,7 +94,7 @@ class MainMenu:
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
 
-                self.menu_login_citizen()
+                MainMenu.menu_login_citizen()
 
         counter = len(str(user_cuil))
 
@@ -112,7 +116,7 @@ class MainMenu:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
 
         try:
             age =input("cual es tu edad: ")
@@ -132,28 +136,28 @@ class MainMenu:
             os.system('cls' if os.name == 'nt' else 'clear')
 
             h.close()
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
         elif counter != 11:
             print("Has ingresado el numero incorrecto de un CUIL.")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.register()
+            MainMenu.register()
         elif password != password1:
             print("Contraseña Incorrecta, intentelo denuevo.")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.register()
+            MainMenu.register()
         elif counter2 != 11:
             print("Cantidad de digitos de su numero telefonico es incorrecta.")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.register()
+            MainMenu.register()
 
-
-    def login (self):
+    @staticmethod
+    def login ():
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         user_cuil=(input("Ingrese su CUIL: ")) 
         try:
@@ -163,7 +167,7 @@ class MainMenu:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
         user_cuil=int(user_cuil)
         i = 0
         for a in df['CUIL']:
@@ -175,48 +179,38 @@ class MainMenu:
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
 
-                self.menu_login_citizen()
+                MainMenu.menu_login_citizen()
                 return i
         password = input("Ingrese su contraseña: ")
-
-        for a in etlist.citizenlist:
-            if int(df['CUIL'][i]) == int(a.CUIL):
-                x = a
-                if x.citizenBan == True:
-                    print('Usted esta bloqueado')
-                    time.sleep(3)
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    self.menu_login_citizen()
-
         if str(password) == str(df['Password'][i]):
             print("Bienvenido a Eventlt.\n\n")
-            self.menu_citizen(i) #<---- esto linkea al menu de las acciones del ciudadano
+            MainMenu.menu_citizen(i) #<---- esto linkea al menu de las acciones del ciudadano
         else:
             print("Contraseña invalida.")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
 
-
-    def menu_login_citizen(self):
+    @staticmethod
+    def menu_login_citizen():
         print ("Porfavor, seleccione una de las siguentes opciones")
         try:
             user=int(input("1.Log in | 2. Registrarse | 3.Salir : "))
         except ValueError:
             print('eso no es un numero, intentelo nuevamente')
-            self.menu_login_citizen()
+            MainMenu.menu_login_citizen()
         if user == 1:
-            self.login()
+            MainMenu.login()
         elif user==2:
-            self.register()
+            MainMenu.register()
         elif user==3:
-            self.menu_o()
+            MainMenu.menu_o()
         else:
             print ("Debes ingresar los numeros indicados anteriormente.")
-            self.menu_login_citizen()
-
-    def menu_citizen(self,citizenidentifier):
+            MainMenu.menu_login_citizen()
+    @staticmethod
+    def menu_citizen(citizenidentifier):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
         for a in etlist.citizenlist:
@@ -224,11 +218,11 @@ class MainMenu:
                 x = a
         if x.zone == -1:
             b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
-            if b > (len(seconddf['Nombre']) - 1) or b < 0:
+            if b > (len(seconddf['Nombre']) - 1):
                 print('este numero no es valido, vuelva a intentarlo')
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
-                self.menu_citizen(citizenidentifier)
+                MainMenu.menu_citizen(citizenidentifier)
             else:
                 print('muchas gracias!')
                 time.sleep(3)
@@ -240,25 +234,18 @@ class MainMenu:
             print ('Debe ingresar un numero')
             time.sleep(3)
             os.system('cls' if os.name== 'nt' else 'clear')
-            self.menu_citizen(citizenidentifier)
+            MainMenu.menu_o()
         if c == 1:
             pass
         elif c == 2:
             pass
         elif c == 3:
-            self.friends_menu(x)
+            pass
         elif c == 4:
-            num = int(input(f'Porfavor, ingrese el numero de su zona nueva:\n{registroDeZonas.listadoZonas(seconddf)}'))
-            if b > (len(seconddf['Nombre']) - 1) or b < 0:
-                print('este numero no es valido, vuelva a intentarlo')
-                time.sleep(3)
-                os.system('cls' if os.name == 'nt' else 'clear')
-                self.menu_citizen(citizenidentifier)
-            x.change_zone(num)
-            print('se cambio la zona correctamente')
-            self.menu_citizen(citizenidentifier)
-
-    def log_adm (self):
+            pass
+        
+    @staticmethod
+    def log_adm ():
         df = pandas.read_csv(os.path.abspath("Base_Adm.csv")) #va el path csv de administradores
         admin_user=input("Ingrese su nombre de usuario como admnistrador: ")
         admin_serch = 0
@@ -270,38 +257,56 @@ class MainMenu:
             print('su nombre no esta como usuario, volviendo al menu principal.')
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
-            self.menu_o()
+            MainMenu.menu_o()
             return admin_serch
         admin_password=input('Ingrese su contraseña: ')
         if str(admin_password) == str(df['Password'][admin_serch]):
             print(f"Usted ingreso como {admin_user}, bienvenido.")
+            menu_administrador.Bienvenido()
         else:
             print("Contraseña invalida, volviendo al menu principal.")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
-            self.menu_o()
+            MainMenu.menu_o()
 
+class menu_administrador():
+    @staticmethod
+    def Bienvenido():
+        choice = int(
+            input("Elija una de las siguientes opciones:1-Volver al menu principal| 2-Bannear| 3-remover Ban:"))
+        if choice == 1:
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            MainMenu.menu_o()
+        if choice == 2:
+            return menu_administrador.BanCitizen()
+        if choice == 3:
+            return menu_administrador.UnBanCitizen()
 
-    def menu_administrador(self):
-        pass
-    
+    @staticmethod
+    def BanCitizen():
+        usuarioseleccionado = str(input("A quien desea bannear?"))
+        for usuarios in etlist.citizenlist:
+            if usuarios.name == usuarioseleccionado and usuarios.citizenBan == False:
+                administrator.banCitizen(usuarios)
+                print(f"{usuarioseleccionado} fue banneado")
+                return menu_administrador.Bienvenido()
+        print("Usuario no encontrado")
+        return menu_administrador.Bienvenido()
 
-    def friends_menu(self, person):
-        a = int(input(f"{person.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
-        if a == 1:
-            pass
-        elif a == 2:
-            pass
-        elif a == 3:
-            pass
-        else:
-            i = 0
-            for a in etlist.citizenlist:
-                if person.CUIL == a.CUIL:
-                    break
-                i += 1
-            self.menu_citizen(i)
+    @staticmethod
+    def UnBanCitizen():
+        usuarioseleccionado = str(input("A quien desea remover el ban?"))
+        for users in etlist.BannedCitizenList:
+            if users.name == usuarioseleccionado:
+                administrator.unbanCitizen(users)
+                print(f"se removio el ban de {usuarioseleccionado}")
+                return menu_administrador.Bienvenido()
+        print("Usuario no encontrado")
+        return menu_administrador.Bienvenido()
 
+def friends_menu(self):
+    pass
 
 class registroDeZonas:
 
