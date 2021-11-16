@@ -4,8 +4,8 @@ import pandas #se debe descargar esta libreria con pip install pandas en la term
 import time
 from citizen import ciudadano
 import new_world
-import webbrowser
-import random
+# import webbrowser
+# import random
 from listadeCuidadanos import etlist
 
 class MainMenu:
@@ -27,28 +27,28 @@ class MainMenu:
                     self.menu_o()
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
-############################################################################################################## menu secreto autistico
-            elif menu_login == 69 or menu_login == 420:
-                randnum = random.randint(1, 7)
-                if randnum == 1:
-                    webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
-                elif randnum == 2:
-                    webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
-                elif randnum == 3:
-                    webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
-                elif randnum == 4:
-                    webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
-                elif randnum == 5:
-                    webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
-                elif randnum == 6:
-                    webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
-                elif randnum == 7:
-                    webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
-                elif randnum == 8:
-                    webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
-                self.menu_o()
+# ############################################################################################################## menu secreto autistico
+#             elif menu_login == 69 or menu_login == 420:
+#                 randnum = random.randint(1, 7)
+#                 if randnum == 1:
+#                     webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
+#                 elif randnum == 2:
+#                     webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
+#                 elif randnum == 3:
+#                     webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
+#                 elif randnum == 4:
+#                     webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
+#                 elif randnum == 5:
+#                     webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
+#                 elif randnum == 6:
+#                     webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
+#                 elif randnum == 7:
+#                     webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
+#                 elif randnum == 8:
+#                     webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
+#                 self.menu_o()
 
-#######################################################################################################################################
+# #######################################################################################################################################
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
         except ValueError:
@@ -178,6 +178,16 @@ class MainMenu:
                 self.menu_login_citizen()
                 return i
         password = input("Ingrese su contraseña: ")
+
+        for a in etlist.citizenlist:
+            if int(df['CUIL'][i]) == int(a.CUIL):
+                x = a
+                if x.citizenBan == True:
+                    print('Usted esta bloqueado')
+                    time.sleep(3)
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    self.menu_login_citizen()
+
         if str(password) == str(df['Password'][i]):
             print("Bienvenido a Eventlt.\n\n")
             self.menu_citizen(i) #<---- esto linkea al menu de las acciones del ciudadano
@@ -214,7 +224,7 @@ class MainMenu:
                 x = a
         if x.zone == -1:
             b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
-            if b > (len(seconddf['Nombre']) - 1):
+            if b > (len(seconddf['Nombre']) - 1) or b < 0:
                 print('este numero no es valido, vuelva a intentarlo')
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
@@ -236,10 +246,17 @@ class MainMenu:
         elif c == 2:
             pass
         elif c == 3:
-            pass
+            self.friends_menu(x)
         elif c == 4:
-            pass
-        
+            num = int(input(f'Porfavor, ingrese el numero de su zona nueva:\n{registroDeZonas.listadoZonas(seconddf)}'))
+            if b > (len(seconddf['Nombre']) - 1) or b < 0:
+                print('este numero no es valido, vuelva a intentarlo')
+                time.sleep(3)
+                os.system('cls' if os.name == 'nt' else 'clear')
+                self.menu_citizen(citizenidentifier)
+            x.change_zone(num)
+            print('se cambio la zona correctamente')
+            self.menu_citizen(citizenidentifier)
 
     def log_adm (self):
         df = pandas.read_csv(os.path.abspath("Base_Adm.csv")) #va el path csv de administradores
@@ -269,8 +286,22 @@ class MainMenu:
         pass
     
 
-    def friends_menu(self):
-        pass
+    def friends_menu(self, person):
+        a = int(input(f"{person.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
+        if a == 1:
+            pass
+        elif a == 2:
+            pass
+        elif a == 3:
+            pass
+        else:
+            i = 0
+            for a in etlist.citizenlist:
+                if person.CUIL == a.CUIL:
+                    break
+                i += 1
+            self.menu_citizen(i)
+
 
 class registroDeZonas:
 

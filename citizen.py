@@ -1,6 +1,6 @@
 from usuario import usuario as user
 #import os
-
+from administrador import admin_bot
 
 class ciudadano(user):
     def __init__(self, name, lastName, age, CUIL, phoneNumber):
@@ -28,7 +28,7 @@ class ciudadano(user):
         pass
 
     def unAsistEvent(self):
-        pass #apens
+        pass 
     
     def enviar_solicitud(self, friend_cuil):
         from listadeCuidadanos import etlist
@@ -44,7 +44,13 @@ class ciudadano(user):
             return ("La persona ya se encuentra en tu lista de amigos")
         
         if [self] in etlist.citizenlist[i].solicitudes:
-            print('ya enviaste una solicitud de amistad a esta persona')
+            return 'ya enviaste una solicitud de amistad a esta persona'
+
+        for cuil in self.rechazado:
+            banCheck = self.rechazado.count(cuil)
+            if  banCheck >= 5:
+                admin_bot.banCitizen(self)
+                return "tu cuenta ha sido bloqueada por mandar multiples solicitudes a la misma persona"
 
         if Check_cuil==True:
             etlist.citizenlist[i].solicitudes.append(self)
@@ -60,21 +66,31 @@ class ciudadano(user):
         for solicitudes in self.solicitudes:
             print(f'{i}| nombre: {solicitudes.name} | cuil: {solicitudes.CUIL}\n')
             i += 1
-        print('para seleccionar un amigo, por favor ponga el numero correspondiente en la pestaña "aceptar_solicitud" o "rechazar solicitud')
-        return i
+        return 'para seleccionar un amigo, por favor ponga el numero correspondiente en la pestaña "aceptar_solicitud" o "rechazar solicitud'
+        
 
     def aceptar_solicitud(self, num):
         if len(self.solicitudes) == 0:
             return 'no hay solicitudes de amistad'
         elif num - 1 > len(self.solicitudes):
             return 'ese numero no es valido'
+        elif num < 0:
+            return "ese es un numero negativo"
         self.friends.append(self.solicitudes[num])
         del self.solicitudes[num]
         return f'se agrego a {self.friends[-1].name} {self.friends[-1].surname} (cuil: {self.friends[-1].CUIL}) correctamente'
         
     def rechazar_solicitud(self, num):
-        pass
-
+        if len(self.solicitudes) == 0:
+            return 'no hay solicitudes de amistad'
+        elif num - 1 > len(self.solicitudes):
+            return 'ese numero no es valido'
+        elif num < 0:
+            return "ese es un numero negativo"
+        self.solicitudes[num].rechazado.append(self.CUIL)
+        del self.solicitudes[num]
+        return 'La solicitud se elimino correctamente'
+        
     def change_zone(self, num):
         self.zone = num
         return num
