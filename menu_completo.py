@@ -3,6 +3,7 @@ import os
 import pandas #se debe descargar esta libreria con pip install pandas en la terminal
 import time
 from citizen import ciudadano
+from listaDeEventos import eventos
 import new_world
 import webbrowser
 import random
@@ -283,19 +284,20 @@ class menu_administrador():
 
     @staticmethod
     def Bienvenido():
-        choice = int(input("Elija una de las siguientes opciones:1-Volver al menu principal| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
+        choice = int(input("Elija una de las siguientes opciones:1-agregar evento| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
         if choice == 1:
-            time.sleep(3)
-            os.system('cls' if os.name == 'nt' else 'clear')
-            MainMenu.menu_o()
-
-        if choice == 2:
+            zona = input('dime la zona del evento: ')
+            nombre = input('titulo de evento: ')
+            descripcion = input('descripcion del evento: ') 
+            latitud = input('latitud: ') 
+            longitud = input('longitud: ') 
+            administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
+            return menu_administrador.Bienvenido()
+        elif choice == 2:
             return menu_administrador.BanCitizen()
-
-        if choice == 3:
+        elif choice == 3:
             return menu_administrador.UnBanCitizen()
-
-        if choice == 4:
+        elif choice == 4:
             defualt_revision_list.update_revision_list()
             print(defualt_revision_list.getlist())
             citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
@@ -306,11 +308,14 @@ class menu_administrador():
                 print("El usuario fue banneado")
                 return menu_administrador.Bienvenido()
             else:
-                defualt_revision_list.remove(chosen_citizen)
+                defualt_revision_list.removecitizen(chosen_citizen)
                 chosen_citizen.quien_me_rechazo=[]
                 print("El ciudadano fue removido de la lista de revision")
                 return menu_administrador.Bienvenido()
-
+        else:
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            MainMenu.menu_o()
 
     @staticmethod
     def BanCitizen():

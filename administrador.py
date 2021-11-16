@@ -2,16 +2,12 @@ from listadeCuidadanos import etlist
 from listaDeEventos import eventos
 
 class administrator():
-    listaderevision=[]
 
     def __init__(self, user):
         self.user = user
 
     @classmethod
-    def mandar_a_revision(cls,citizen):
-        cls.listaderevision.append(citizen)
-
-    def addEvent(self, location, nombre, descripcion, latitud, longitud):
+    def addEvent(cls, location, nombre, descripcion, latitud, longitud):
         print(eventos.eventCreator(location, nombre, descripcion, latitud, longitud))
 
     @staticmethod
