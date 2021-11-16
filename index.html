@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_01966b35569b4892b9a5647f1d731f72 {
+                #map_2bb57e16dbae497aa0ad2080841c2636 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -35,19 +35,21 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map_01966b35569b4892b9a5647f1d731f72" ></div>
+            <div class="folium-map" id="map_2bb57e16dbae497aa0ad2080841c2636" ></div>
         
 </body>
 <script>    
     
-            var map_01966b35569b4892b9a5647f1d731f72 = L.map(
-                "map_01966b35569b4892b9a5647f1d731f72",
+            var map_2bb57e16dbae497aa0ad2080841c2636 = L.map(
+                "map_2bb57e16dbae497aa0ad2080841c2636",
                 {
-                    center: [-36.8939975, -60.3227331],
+                    center: [-34.0954713, -59.0245097],
                     crs: L.CRS.EPSG3857,
-                    zoom: 7,
-                    zoomControl: true,
+                    zoom: 15,
+                    zoomControl: false,
                     preferCanvas: false,
+                    scrollWheelZoom: false,
+                    dragging: false,
                 }
             );
 
@@ -55,174 +57,9 @@
 
         
     
-            var tile_layer_a579e1a8e63241f79c13c3aabc46ac33 = L.tileLayer(
+            var tile_layer_36138f01b78e4fb98f76fae6ada021ef = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var marker_9d5fc0f6f53a4546bf4543d4d65d6fa5 = L.marker(
-                [-34.603, -58.381],
-                {}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var icon_f77ca0e0ce4847e7b9014e39af5e3055 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
-            );
-            marker_9d5fc0f6f53a4546bf4543d4d65d6fa5.setIcon(icon_f77ca0e0ce4847e7b9014e39af5e3055);
-        
-    
-        var popup_e322b01293fe471eae91e1dd8799b735 = L.popup({"maxWidth": 300, "minWidth": 300});
-
-        
-            var html_11f41360ce0446c29b27f3cfb30058d2 = $(`<div id="html_11f41360ce0446c29b27f3cfb30058d2" style="width: 100.0%; height: 100.0%;">gente en la zona: 10<br>         <strong> ayudaaaaaaaa<\strong><br></div>`)[0];
-            popup_e322b01293fe471eae91e1dd8799b735.setContent(html_11f41360ce0446c29b27f3cfb30058d2);
-        
-
-        marker_9d5fc0f6f53a4546bf4543d4d65d6fa5.bindPopup(popup_e322b01293fe471eae91e1dd8799b735)
-        ;
-
-        
-    
-    
-            marker_9d5fc0f6f53a4546bf4543d4d65d6fa5.bindTooltip(
-                `<div>
-                     Buenos Aires
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_2202529ff0084c61a6dce91676edb8ab = L.marker(
-                [-38.555, -58.725],
-                {}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var icon_d5776d0a6dae462596cdbc1e22ec40a3 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
-            );
-            marker_2202529ff0084c61a6dce91676edb8ab.setIcon(icon_d5776d0a6dae462596cdbc1e22ec40a3);
-        
-    
-        var popup_1ab395b76ccf4820b85ec75d3315918b = L.popup({"maxWidth": 300, "minWidth": 300});
-
-        
-            var html_742e7186765d4373b26e017269d6d82d = $(`<div id="html_742e7186765d4373b26e017269d6d82d" style="width: 100.0%; height: 100.0%;">gente en la zona: 5<br>         </div>`)[0];
-            popup_1ab395b76ccf4820b85ec75d3315918b.setContent(html_742e7186765d4373b26e017269d6d82d);
-        
-
-        marker_2202529ff0084c61a6dce91676edb8ab.bindPopup(popup_1ab395b76ccf4820b85ec75d3315918b)
-        ;
-
-        
-    
-    
-            marker_2202529ff0084c61a6dce91676edb8ab.bindTooltip(
-                `<div>
-                     Necochea
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_bed0fd12a40b48b8bfd7efa6843b4ead = L.marker(
-                [-37.996, -57.549],
-                {}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var icon_ebb1bdd10be44b129ae723970e7f60bf = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
-            );
-            marker_bed0fd12a40b48b8bfd7efa6843b4ead.setIcon(icon_ebb1bdd10be44b129ae723970e7f60bf);
-        
-    
-        var popup_1ec06ce276f5487684576c25b4d241d9 = L.popup({"maxWidth": 300, "minWidth": 300});
-
-        
-            var html_006581c4ccec4675a6f95befd96331c0 = $(`<div id="html_006581c4ccec4675a6f95befd96331c0" style="width: 100.0%; height: 100.0%;">gente en la zona: 3<br>         </div>`)[0];
-            popup_1ec06ce276f5487684576c25b4d241d9.setContent(html_006581c4ccec4675a6f95befd96331c0);
-        
-
-        marker_bed0fd12a40b48b8bfd7efa6843b4ead.bindPopup(popup_1ec06ce276f5487684576c25b4d241d9)
-        ;
-
-        
-    
-    
-            marker_bed0fd12a40b48b8bfd7efa6843b4ead.bindTooltip(
-                `<div>
-                     Mar del Plata
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_6070baaaf1014d3d9d652c81105cd051 = L.marker(
-                [-34.4570918, -58.9141609],
-                {}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var icon_12636c634af04eeea42d7d5e67af97f3 = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
-            );
-            marker_6070baaaf1014d3d9d652c81105cd051.setIcon(icon_12636c634af04eeea42d7d5e67af97f3);
-        
-    
-        var popup_e0ff5ff85e7f4a2bb915a01b22e95ff6 = L.popup({"maxWidth": 300, "minWidth": 300});
-
-        
-            var html_05e74934dfe2456d9d50abfe27cd6ca3 = $(`<div id="html_05e74934dfe2456d9d50abfe27cd6ca3" style="width: 100.0%; height: 100.0%;">gente en la zona: 1<br>         <strong> holiwis<\strong><br></div>`)[0];
-            popup_e0ff5ff85e7f4a2bb915a01b22e95ff6.setContent(html_05e74934dfe2456d9d50abfe27cd6ca3);
-        
-
-        marker_6070baaaf1014d3d9d652c81105cd051.bindPopup(popup_e0ff5ff85e7f4a2bb915a01b22e95ff6)
-        ;
-
-        
-    
-    
-            marker_6070baaaf1014d3d9d652c81105cd051.bindTooltip(
-                `<div>
-                     Pilar
-                 </div>`,
-                {"sticky": true}
-            );
-        
-    
-            var marker_28f0b9589400466da275a7495a1798f9 = L.marker(
-                [-34.0954713, -59.0245097],
-                {}
-            ).addTo(map_01966b35569b4892b9a5647f1d731f72);
-        
-    
-            var icon_1c1641c01bd2477b80b531f3e4c45e3d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
-            );
-            marker_28f0b9589400466da275a7495a1798f9.setIcon(icon_1c1641c01bd2477b80b531f3e4c45e3d);
-        
-    
-        var popup_5c2b4172356d485daf3197548e9af56c = L.popup({"maxWidth": 300, "minWidth": 300});
-
-        
-            var html_5b93f5bbf0ae437c93be0072afc58e7c = $(`<div id="html_5b93f5bbf0ae437c93be0072afc58e7c" style="width: 100.0%; height: 100.0%;">gente en la zona: 30<br>         </div>`)[0];
-            popup_5c2b4172356d485daf3197548e9af56c.setContent(html_5b93f5bbf0ae437c93be0072afc58e7c);
-        
-
-        marker_28f0b9589400466da275a7495a1798f9.bindPopup(popup_5c2b4172356d485daf3197548e9af56c)
-        ;
-
-        
-    
-    
-            marker_28f0b9589400466da275a7495a1798f9.bindTooltip(
-                `<div>
-                     Zarate
-                 </div>`,
-                {"sticky": true}
-            );
+            ).addTo(map_2bb57e16dbae497aa0ad2080841c2636);
         
 </script>

@@ -13,6 +13,7 @@ from administrador import administrator
 class MainMenu:
     @staticmethod
     def menu_o():
+        seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
         try:
             print ('Bienvenido a Eventlt')
             menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
@@ -24,12 +25,15 @@ class MainMenu:
                 MainMenu.menu_login_citizen()
 
             elif menu_login == 3:
-                new_world.Mapa.show_map()
-                go_back = int(input("1.Volver al menu | 2. Cerrar programa: "))
-                if go_back ==1 :
-                    MainMenu.menu_o()
+                print('zonas disponibles:')
+                print(registroDeZonas.listadoZonas(seconddf))
+                num = int(input("elija su zona"))
+                if num <= len(seconddf['Nombre']):
+                    new_world.Mapa.show_map(seconddf['Latitud'][num],seconddf['Longitud'][num])
                 else:
+                    print('numero invalido como pella')
                     os.system('cls' if os.name == 'nt' else 'clear')
+                    MainMenu.menu_o()
 ############################################################################################################## menu secreto autistico
             elif menu_login == 69 or menu_login == 420:
                 randnum = random.randint(1, 7)
@@ -240,9 +244,13 @@ class MainMenu:
         elif c == 2:
             pass
         elif c == 3:
-            pass
+            menu_amigos.friends_menu(citizenidentifier)
         elif c == 4:
-            pass
+            registroDeZonas.listadoZonas(seconddf)
+            num = ("a que zona quiere cambiar?\n")
+            x.change_zone(num)
+            print('su zona se actualizo correctamente')
+            MainMenu.menu_citizen(citizenidentifier)
         
     @staticmethod
     def log_adm ():
@@ -285,28 +293,48 @@ class menu_administrador():
 
     @staticmethod
     def BanCitizen():
-        usuarioseleccionado = str(input("A quien desea bannear?"))
+        usuarioseleccionado = int(input("A quien desea bannear?"))
         for usuarios in etlist.citizenlist:
-            if usuarios.name == usuarioseleccionado and usuarios.citizenBan == False:
+            if usuarios.CUIL == usuarioseleccionado and usuarios.citizenBan == False:
                 administrator.banCitizen(usuarios)
-                print(f"{usuarioseleccionado} fue banneado")
+                print(f"el usuario con CUIL {usuarioseleccionado} fue banneado")
                 return menu_administrador.Bienvenido()
         print("Usuario no encontrado")
         return menu_administrador.Bienvenido()
 
     @staticmethod
     def UnBanCitizen():
-        usuarioseleccionado = str(input("A quien desea remover el ban?"))
+        usuarioseleccionado = int(input("A quien desea remover el ban? CUIL: "))
         for users in etlist.BannedCitizenList:
-            if users.name == usuarioseleccionado:
+            if users.CUIL == usuarioseleccionado:
                 administrator.unbanCitizen(users)
-                print(f"se removio el ban de {usuarioseleccionado}")
+                print(f"se removio el ban de la persona con el CUIL: {usuarioseleccionado}")
                 return menu_administrador.Bienvenido()
         print("Usuario no encontrado")
         return menu_administrador.Bienvenido()
 
-def friends_menu(self):
-    pass
+class menu_amigos:
+
+    @staticmethod
+    def friends_menu(user):
+        df = pandas.read_csv(os.path.abspath("Database.csv"))
+        for a in etlist.citizenlist:
+            if int(df['CUIL'][user]) == int(a.CUIL):
+                x = a
+        a = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
+        if a == 1:
+            pass
+        elif a == 2:
+            pass
+        elif a == 3:
+            pass
+        else:
+            i = 0
+            for a in etlist.citizenlist:
+                if user.CUIL == a.CUIL:
+                    break
+                i += 1
+            MainMenu.menu_citizen(user)
 
 class registroDeZonas:
 

@@ -44,15 +44,9 @@ class ciudadano(user):
         if [self] in etlist.citizenlist[i].solicitudes:
             return 'ya enviaste una solicitud de amistad a esta persona'
 
-        for cuil in self.rechazado:
-            banCheck = self.rechazado.count(cuil)
-            if  banCheck >= 5:
-                # admin_bot.banCitizen(self)
-                return "tu cuenta ha sido bloqueada por mandar multiples solicitudes a la misma persona"
-
         if Check_cuil==True:
             etlist.citizenlist[i].solicitudes.append(self)
-            return f"La persona con cuil {friend_cuil} fue agregada a tu lista de amigos."
+            return f"Enviaste una solicitud a la persona con cuil {friend_cuil}."
         else:
             return "La persona no se encuentra el database del Anses."
 
