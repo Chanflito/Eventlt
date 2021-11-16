@@ -9,7 +9,7 @@ class ciudadano(user):
         self.citizenBan = False
         self.friends=[]
         self.solicitudes=[]
-        self.rechazado = []
+        self.quien_me_rechazo = []
 
     @classmethod
     def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
@@ -61,26 +61,26 @@ class ciudadano(user):
         return 'para seleccionar un amigo, por favor ponga el numero correspondiente en la pestaña "aceptar_solicitud" o "rechazar solicitud'
         
 
-    def aceptar_solicitud(self, num):
+    def aceptar_solicitud(self, idem):
         if len(self.solicitudes) == 0:
             return 'no hay solicitudes de amistad'
-        elif num - 1 > len(self.solicitudes):
+        elif idem - 1 > len(self.solicitudes):
             return 'ese numero no es valido'
-        elif num < 0:
+        elif idem < 0:
             return "ese es un numero negativo"
-        self.friends.append(self.solicitudes[num])
-        del self.solicitudes[num]
+        self.friends.append(self.solicitudes[idem])
+        del self.solicitudes[idem]
         return f'se agrego a {self.friends[-1].name} {self.friends[-1].surname} (cuil: {self.friends[-1].CUIL}) correctamente'
         
-    def rechazar_solicitud(self, num):
+    def rechazar_solicitud(self, idem):
         if len(self.solicitudes) == 0:
             return 'no hay solicitudes de amistad'
-        elif num - 1 > len(self.solicitudes):
+        elif idem - 1 > len(self.solicitudes):
             return 'ese numero no es valido'
-        elif num < 0:
+        elif idem < 0:
             return "ese es un numero negativo"
-        self.solicitudes[num].rechazado.append(self.CUIL)
-        del self.solicitudes[num]
+        self.solicitudes[idem].quien_me_rechazo.append(self.CUIL)
+        del self.solicitudes[idem]
         return 'La solicitud se elimino correctamente'
         
     def change_zone(self, num):
