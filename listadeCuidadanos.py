@@ -18,7 +18,15 @@ class CitizenList():
         
     def addBannedCitizen(self, citizen):
         self.BannedCitizenList.append(citizen)
-        
+
+    def remove_citizen(self,citizen):
+        counter=0
+        while counter<len(self.citizenlist):
+            if citizen==self.citizenlist[counter]:
+                del self.citizenlist[counter]
+                return self.citizenlist
+            else:
+                counter=counter+1
     def removeBannedCitizen(self, citizen):
         i=0
         while i<len(self.BannedCitizenList):
@@ -32,3 +40,4 @@ class CitizenList():
         return(self.citizenlist)
 
 etlist = CitizenList()
+
