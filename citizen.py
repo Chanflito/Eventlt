@@ -36,7 +36,7 @@ class ciudadano(user):
         Check_cuil=False
         i=0
         for a in etlist.citizenlist:
-            if int(a.list.CUIL) == int(friend_cuil):
+            if int(a.CUIL) == int(friend_cuil):
                 Check_cuil=True
                 break
             i+=1
@@ -65,15 +65,16 @@ class ciudadano(user):
         
 
     def aceptar_solicitud(self, idem):
+        idem = int(idem)
         if len(self.solicitudes) == 0:
             return 'no hay solicitudes de amistad'
         elif idem - 1 > len(self.solicitudes):
-            return 'ese numero no es valido'
+            return 'Ok, regresando al menu de amigos'
         elif idem < 0:
             return "ese es un numero negativo"
         self.friends.append(self.solicitudes[idem])
         del self.solicitudes[idem]
-        return f'se agrego a {self.friends[-1].name} {self.friends[-1].surname} (cuil: {self.friends[-1].CUIL}) correctamente'
+        return f'se agrego a {self.friends[-1].name} {self.friends[-1].lastName} (cuil: {self.friends[-1].CUIL}) correctamente'
         
     def rechazar_solicitud(self, idem):
         if len(self.solicitudes) == 0:

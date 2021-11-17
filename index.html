@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3322a9adbad64503b5e9cb4bf859f789 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_3322a9adbad64503b5e9cb4bf859f789" ></div>
+        
+</body>
+<script>    
+    
+            var map_3322a9adbad64503b5e9cb4bf859f789 = L.map(
+                "map_3322a9adbad64503b5e9cb4bf859f789",
+                {
+                    center: [-34.457092, -58.914161],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4d20c2efba89467ba05092b8835fc6fa = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_3322a9adbad64503b5e9cb4bf859f789);
+        
+    
+            var marker_cluster_cc73d516e943477d82e8d1b89be5bd6e = L.markerClusterGroup(
+                {}
+            );
+            map_3322a9adbad64503b5e9cb4bf859f789.addLayer(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+            var marker_2cc72bd9cbac4b1198ba4624c9baca2a = L.marker(
+                [-34.096539, -59.021483],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_002406bbf56048b980b034a83979ba25 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_6d70605827a543369ccfb2f780872724 = $(`<div id="html_6d70605827a543369ccfb2f780872724" style="width: 100.0%; height: 100.0%;">Carrerita</div>`)[0];
+            popup_002406bbf56048b980b034a83979ba25.setContent(html_6d70605827a543369ccfb2f780872724);
+        
+
+        marker_2cc72bd9cbac4b1198ba4624c9baca2a.bindPopup(popup_002406bbf56048b980b034a83979ba25)
+        ;
+
+        
+    
+    
+            marker_2cc72bd9cbac4b1198ba4624c9baca2a.bindTooltip(
+                `<div>
+                     Carrera
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ab22e4d1cffc4927825cce7c2fb580d9 = L.marker(
+                [-34.097835, -59.020207],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_cada1cdd2b5c4094b206a0c3b3f19bb8 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_8a6f74e9233b414e9c3cc3b0ed89c280 = $(`<div id="html_8a6f74e9233b414e9c3cc3b0ed89c280" style="width: 100.0%; height: 100.0%;">Rojo</div>`)[0];
+            popup_cada1cdd2b5c4094b206a0c3b3f19bb8.setContent(html_8a6f74e9233b414e9c3cc3b0ed89c280);
+        
+
+        marker_ab22e4d1cffc4927825cce7c2fb580d9.bindPopup(popup_cada1cdd2b5c4094b206a0c3b3f19bb8)
+        ;
+
+        
+    
+    
+            marker_ab22e4d1cffc4927825cce7c2fb580d9.bindTooltip(
+                `<div>
+                     Semaforo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e334a3388f4346208677d755c0b04098 = L.marker(
+                [-34.099878, -59.024424],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_983cb9ebb4d948babfc454080799a57d = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_2c73858cfcf34d5ca382fa3579e39442 = $(`<div id="html_2c73858cfcf34d5ca382fa3579e39442" style="width: 100.0%; height: 100.0%;">La Clandes</div>`)[0];
+            popup_983cb9ebb4d948babfc454080799a57d.setContent(html_2c73858cfcf34d5ca382fa3579e39442);
+        
+
+        marker_e334a3388f4346208677d755c0b04098.bindPopup(popup_983cb9ebb4d948babfc454080799a57d)
+        ;
+
+        
+    
+    
+            marker_e334a3388f4346208677d755c0b04098.bindTooltip(
+                `<div>
+                     Fiesta
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_db6544f0186a458bac8a255b9807ac8f = L.marker(
+                [-34.456986, -58.915867],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_7b261e059e0740e0885c52f9a5b55131 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_e0c39699b210491ca3f4fb0c237403de = $(`<div id="html_e0c39699b210491ca3f4fb0c237403de" style="width: 100.0%; height: 100.0%;">de chocolate</div>`)[0];
+            popup_7b261e059e0740e0885c52f9a5b55131.setContent(html_e0c39699b210491ca3f4fb0c237403de);
+        
+
+        marker_db6544f0186a458bac8a255b9807ac8f.bindPopup(popup_7b261e059e0740e0885c52f9a5b55131)
+        ;
+
+        
+    
+    
+            marker_db6544f0186a458bac8a255b9807ac8f.bindTooltip(
+                `<div>
+                     haciendo galletitas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5e4cde4b3d5240daa2a4201e1ce1709f = L.marker(
+                [-34.455871, -58.917508],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_3b2cb0b426c247c8a226875034ece6ba = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_5f614b62c0054d17a250bf2502bb41f2 = $(`<div id="html_5f614b62c0054d17a250bf2502bb41f2" style="width: 100.0%; height: 100.0%;">chocolates y turrones a mitad de precio</div>`)[0];
+            popup_3b2cb0b426c247c8a226875034ece6ba.setContent(html_5f614b62c0054d17a250bf2502bb41f2);
+        
+
+        marker_5e4cde4b3d5240daa2a4201e1ce1709f.bindPopup(popup_3b2cb0b426c247c8a226875034ece6ba)
+        ;
+
+        
+    
+    
+            marker_5e4cde4b3d5240daa2a4201e1ce1709f.bindTooltip(
+                `<div>
+                     venta de maria juana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ede3267fd1f440281ec7703a279af6b = L.marker(
+                [-34.608113, -58.436174],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_98289e7601c8435ca07696c357e1afd1 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_60a20635e9af4f528b58d90592d01842 = $(`<div id="html_60a20635e9af4f528b58d90592d01842" style="width: 100.0%; height: 100.0%;">con membrillo</div>`)[0];
+            popup_98289e7601c8435ca07696c357e1afd1.setContent(html_60a20635e9af4f528b58d90592d01842);
+        
+
+        marker_9ede3267fd1f440281ec7703a279af6b.bindPopup(popup_98289e7601c8435ca07696c357e1afd1)
+        ;
+
+        
+    
+    
+            marker_9ede3267fd1f440281ec7703a279af6b.bindTooltip(
+                `<div>
+                     venta de medialunas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_00cbfef5e2d7492cb067b148d1257dd1 = L.marker(
+                [-37.997993, -57.549437],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_ef3268eed65849168e2b90ae017327e4 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_7cc18a94c5ac45258ddd2049afe8a460 = $(`<div id="html_7cc18a94c5ac45258ddd2049afe8a460" style="width: 100.0%; height: 100.0%;">con mediomundo o harpon</div>`)[0];
+            popup_ef3268eed65849168e2b90ae017327e4.setContent(html_7cc18a94c5ac45258ddd2049afe8a460);
+        
+
+        marker_00cbfef5e2d7492cb067b148d1257dd1.bindPopup(popup_ef3268eed65849168e2b90ae017327e4)
+        ;
+
+        
+    
+    
+            marker_00cbfef5e2d7492cb067b148d1257dd1.bindTooltip(
+                `<div>
+                     caza de lobos marinos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_56ad9df233d24a7087fa7fd7d7223b95 = L.marker(
+                [-38.551659, -58.727559],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_ff78fe2ac67b4f8d86794ec62bc15b05 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_6a75ec36b45944e18b5353776372164d = $(`<div id="html_6a75ec36b45944e18b5353776372164d" style="width: 100.0%; height: 100.0%;">Calle 34 entre 105 y 107</div>`)[0];
+            popup_ff78fe2ac67b4f8d86794ec62bc15b05.setContent(html_6a75ec36b45944e18b5353776372164d);
+        
+
+        marker_56ad9df233d24a7087fa7fd7d7223b95.bindPopup(popup_ff78fe2ac67b4f8d86794ec62bc15b05)
+        ;
+
+        
+    
+    
+            marker_56ad9df233d24a7087fa7fd7d7223b95.bindTooltip(
+                `<div>
+                     Fiesta dura en lo de Pella
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f6acf9ecc530482b8276694dc48e8928 = L.marker(
+                [-37.999552, -57.550545],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_c86626068bb04aa3b4fa973f461ec2e9 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_8bb164ceefee435fb8d1ba8af5a4a75f = $(`<div id="html_8bb164ceefee435fb8d1ba8af5a4a75f" style="width: 100.0%; height: 100.0%;">playa</div>`)[0];
+            popup_c86626068bb04aa3b4fa973f461ec2e9.setContent(html_8bb164ceefee435fb8d1ba8af5a4a75f);
+        
+
+        marker_f6acf9ecc530482b8276694dc48e8928.bindPopup(popup_c86626068bb04aa3b4fa973f461ec2e9)
+        ;
+
+        
+    
+    
+            marker_f6acf9ecc530482b8276694dc48e8928.bindTooltip(
+                `<div>
+                     playa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ae4e3be04b83417aa7e7000354ac5e3e = L.marker(
+                [-34.096539, -59.021483],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_4cb544f890624453af8f7acfe8046c2b = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_a4340c8c5a1b47f6bd0f716577298b5e = $(`<div id="html_a4340c8c5a1b47f6bd0f716577298b5e" style="width: 100.0%; height: 100.0%;">Carrerita</div>`)[0];
+            popup_4cb544f890624453af8f7acfe8046c2b.setContent(html_a4340c8c5a1b47f6bd0f716577298b5e);
+        
+
+        marker_ae4e3be04b83417aa7e7000354ac5e3e.bindPopup(popup_4cb544f890624453af8f7acfe8046c2b)
+        ;
+
+        
+    
+    
+            marker_ae4e3be04b83417aa7e7000354ac5e3e.bindTooltip(
+                `<div>
+                     Carrera
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c4c1f3d217c3454a8569eff2f4429291 = L.marker(
+                [-34.097835, -59.020207],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_b498d2166e354c80b01f823990969169 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_190278ef2f024a7fb473d0aec316af7a = $(`<div id="html_190278ef2f024a7fb473d0aec316af7a" style="width: 100.0%; height: 100.0%;">Rojo</div>`)[0];
+            popup_b498d2166e354c80b01f823990969169.setContent(html_190278ef2f024a7fb473d0aec316af7a);
+        
+
+        marker_c4c1f3d217c3454a8569eff2f4429291.bindPopup(popup_b498d2166e354c80b01f823990969169)
+        ;
+
+        
+    
+    
+            marker_c4c1f3d217c3454a8569eff2f4429291.bindTooltip(
+                `<div>
+                     Semaforo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_699625fee3d74e629fd36e2683fad00a = L.marker(
+                [-34.099878, -59.024424],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_70701c52515446a3982d2d6cf3af6f82 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_d1f16cb56d114131a47696a07bf7b5ef = $(`<div id="html_d1f16cb56d114131a47696a07bf7b5ef" style="width: 100.0%; height: 100.0%;">La Clandes</div>`)[0];
+            popup_70701c52515446a3982d2d6cf3af6f82.setContent(html_d1f16cb56d114131a47696a07bf7b5ef);
+        
+
+        marker_699625fee3d74e629fd36e2683fad00a.bindPopup(popup_70701c52515446a3982d2d6cf3af6f82)
+        ;
+
+        
+    
+    
+            marker_699625fee3d74e629fd36e2683fad00a.bindTooltip(
+                `<div>
+                     Fiesta
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_72d4a0f251064115a3781bcd3afe6d64 = L.marker(
+                [-34.456986, -58.915867],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_ef5192e458a746ae894a4513b2538b09 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_f40e3c23e02e4d6faf98843a434905e6 = $(`<div id="html_f40e3c23e02e4d6faf98843a434905e6" style="width: 100.0%; height: 100.0%;">de chocolate</div>`)[0];
+            popup_ef5192e458a746ae894a4513b2538b09.setContent(html_f40e3c23e02e4d6faf98843a434905e6);
+        
+
+        marker_72d4a0f251064115a3781bcd3afe6d64.bindPopup(popup_ef5192e458a746ae894a4513b2538b09)
+        ;
+
+        
+    
+    
+            marker_72d4a0f251064115a3781bcd3afe6d64.bindTooltip(
+                `<div>
+                     haciendo galletitas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c3c04abcb5e349b2b8d065cb5dbfd296 = L.marker(
+                [-34.455871, -58.917508],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_45317ace8bc646f59afb33f2e66466e4 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_509786e25c5a40408ee918c37f494dfa = $(`<div id="html_509786e25c5a40408ee918c37f494dfa" style="width: 100.0%; height: 100.0%;">chocolates y turrones a mitad de precio</div>`)[0];
+            popup_45317ace8bc646f59afb33f2e66466e4.setContent(html_509786e25c5a40408ee918c37f494dfa);
+        
+
+        marker_c3c04abcb5e349b2b8d065cb5dbfd296.bindPopup(popup_45317ace8bc646f59afb33f2e66466e4)
+        ;
+
+        
+    
+    
+            marker_c3c04abcb5e349b2b8d065cb5dbfd296.bindTooltip(
+                `<div>
+                     venta de maria juana
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_aed36eca38b14e6bb276496edbbf12c6 = L.marker(
+                [-34.608113, -58.436174],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_0622604bfea64352852184df0f104e99 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_4663462841214daebbb9db0c3cb56bd6 = $(`<div id="html_4663462841214daebbb9db0c3cb56bd6" style="width: 100.0%; height: 100.0%;">con membrillo</div>`)[0];
+            popup_0622604bfea64352852184df0f104e99.setContent(html_4663462841214daebbb9db0c3cb56bd6);
+        
+
+        marker_aed36eca38b14e6bb276496edbbf12c6.bindPopup(popup_0622604bfea64352852184df0f104e99)
+        ;
+
+        
+    
+    
+            marker_aed36eca38b14e6bb276496edbbf12c6.bindTooltip(
+                `<div>
+                     venta de medialunas
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3966982abe474537a5f9f521d17df387 = L.marker(
+                [-37.997993, -57.549437],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_8c78995f0e4840489ba433403ae7e330 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_285ed4c34f7441c186dc735ba401e3c8 = $(`<div id="html_285ed4c34f7441c186dc735ba401e3c8" style="width: 100.0%; height: 100.0%;">con mediomundo o harpon</div>`)[0];
+            popup_8c78995f0e4840489ba433403ae7e330.setContent(html_285ed4c34f7441c186dc735ba401e3c8);
+        
+
+        marker_3966982abe474537a5f9f521d17df387.bindPopup(popup_8c78995f0e4840489ba433403ae7e330)
+        ;
+
+        
+    
+    
+            marker_3966982abe474537a5f9f521d17df387.bindTooltip(
+                `<div>
+                     caza de lobos marinos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2a1e226622f447459a47f051cd95f78e = L.marker(
+                [-38.551659, -58.727559],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_59a91fd0149d410f9c840741b2f77c3b = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_78b04d880ceb45679e42f1800451f95f = $(`<div id="html_78b04d880ceb45679e42f1800451f95f" style="width: 100.0%; height: 100.0%;">Calle 34 entre 105 y 107</div>`)[0];
+            popup_59a91fd0149d410f9c840741b2f77c3b.setContent(html_78b04d880ceb45679e42f1800451f95f);
+        
+
+        marker_2a1e226622f447459a47f051cd95f78e.bindPopup(popup_59a91fd0149d410f9c840741b2f77c3b)
+        ;
+
+        
+    
+    
+            marker_2a1e226622f447459a47f051cd95f78e.bindTooltip(
+                `<div>
+                     Fiesta dura en lo de Pella
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_482e33f98c4e425d8daec167dc955910 = L.marker(
+                [-37.999552, -57.550545],
+                {}
+            ).addTo(marker_cluster_cc73d516e943477d82e8d1b89be5bd6e);
+        
+    
+        var popup_9abf224d74af41e1999c220b41f4766c = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_1e7b92cf23664163aa687782cf422963 = $(`<div id="html_1e7b92cf23664163aa687782cf422963" style="width: 100.0%; height: 100.0%;">playa</div>`)[0];
+            popup_9abf224d74af41e1999c220b41f4766c.setContent(html_1e7b92cf23664163aa687782cf422963);
+        
+
+        marker_482e33f98c4e425d8daec167dc955910.bindPopup(popup_9abf224d74af41e1999c220b41f4766c)
+        ;
+
+        
+    
+    
+            marker_482e33f98c4e425d8daec167dc955910.bindTooltip(
+                `<div>
+                     playa
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>

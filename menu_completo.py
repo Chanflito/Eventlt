@@ -232,6 +232,8 @@ class MainMenu:
             x.change_zone(num)
             print('su zona se actualizo correctamente')
             MainMenu.menu_citizen(citizenidentifier)
+        else:
+            return MainMenu.menu_o()
         
     @staticmethod
     def log_adm ():
@@ -335,11 +337,18 @@ class menu_amigos:
                 x = a
         menu_choice = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
         if menu_choice == 1:
-            pass
+            print(x.ver_solicitudes())
+            solicitud_choice = input('dime el numero de el que quieres agregar: ')
+            print(x.aceptar_solicitud(solicitud_choice))
+            return menu_amigos.friends_menu(user)
         elif menu_choice == 2:
-            pass
+            friend_cuil = int(input("dime el cuil de tu amigo"))
+            print(x.enviar_solicitud(friend_cuil))
+            return menu_amigos.friends_menu(user)
         elif menu_choice == 3:
-            pass
+            for friend in x.friends:
+                print(f"{friend.name} {friend.lastName} | {friend.CUIL}")
+            return menu_amigos.friends_menu(user)
         else:
             MainMenu.menu_citizen(user)
 
