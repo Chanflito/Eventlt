@@ -29,26 +29,21 @@ class eventList:
                 x = EventType(descripcion, zona)
 
                 latitud_min = float(seconddf["min_Lat"][a])
-                latitud_distFromCenter = float(seconddf['Latitud'] - latitud_min)
-                latitud_max = latitud_min + 2*( latitud_distFromCenter )
-
+                latitud_distFromCenter = float(seconddf['Latitud'][a] - latitud_min)
+                latitud_max = latitud_min + 2*(latitud_distFromCenter)
+                longitud_min = float(seconddf['min_Lon'][a])
+                longitud_distanceFromCenter = float(seconddf['Longitud'][a] - longitud_min)
+                longitud_max = longitud_min + 2*(longitud_distanceFromCenter)
 
                 if  float(latitud) < latitud_min or float(latitud) > latitud_max:
                     return 'usted no esta dentro de los limites de la zona'
-                elif float(seconddf["min_Lon"][a]) > latitud or (float(seconddf["min_Lon"][a])+2*(float(seconddf['Longitud'])-float(seconddf['min_Lon']))):
+                elif float(longitud) < longitud_min or float(longitud) > longitud_max:
                     return 'usted no esta dentro de los limites de la zona'
                 with open(os.path.abspath("marcadores.csv"),mode="a",newline="") as h:
                     writer=csv.writer(h,delimiter=",")
                     writer.writerow([zona,nombre,descripcion, latitud, longitud])
                 self.list[a].append(x)
                 return x
-
-
-
-
-
-
-
             else:
                 a += 1 
         return 'no existe la localizacion puesta'

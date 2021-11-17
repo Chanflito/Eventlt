@@ -23,7 +23,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_b8cd4c5321d94c75b6b87e30476735d3 {
+                #map_ec2214a2aabe4a03b517a1987b323f67 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -32,24 +32,25 @@
                 }
             </style>
         
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
 </head>
 <body>    
     
-            <div class="folium-map" id="map_b8cd4c5321d94c75b6b87e30476735d3" ></div>
+            <div class="folium-map" id="map_ec2214a2aabe4a03b517a1987b323f67" ></div>
         
 </body>
 <script>    
     
-            var map_b8cd4c5321d94c75b6b87e30476735d3 = L.map(
-                "map_b8cd4c5321d94c75b6b87e30476735d3",
+            var map_ec2214a2aabe4a03b517a1987b323f67 = L.map(
+                "map_ec2214a2aabe4a03b517a1987b323f67",
                 {
                     center: [-34.0954713, -59.0245097],
                     crs: L.CRS.EPSG3857,
                     zoom: 15,
-                    zoomControl: false,
+                    zoomControl: true,
                     preferCanvas: false,
-                    scrollWheelZoom: false,
-                    dragging: false,
                 }
             );
 
@@ -57,40 +58,121 @@
 
         
     
-            var tile_layer_2b826d70300c49fabca8495fe4e8a649 = L.tileLayer(
+            var tile_layer_e9ab5cde96624db4b6f61a03ec8a5b9d = L.tileLayer(
                 "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            ).addTo(map_b8cd4c5321d94c75b6b87e30476735d3);
+            ).addTo(map_ec2214a2aabe4a03b517a1987b323f67);
         
     
-            var marker_0c1afc3bdc5840668dfd88de6e3a3f91 = L.marker(
+            var marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb = L.markerClusterGroup(
+                {}
+            );
+            map_ec2214a2aabe4a03b517a1987b323f67.addLayer(marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb);
+        
+    
+            var marker_ed2306d486ca4eb2a68ee3dfc44c203b = L.marker(
                 [-34.096539, -59.021483],
                 {}
-            ).addTo(map_b8cd4c5321d94c75b6b87e30476735d3);
+            ).addTo(marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb);
         
     
-            var icon_430001ac2653427b9cf8c97d589b862d = L.AwesomeMarkers.icon(
-                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
-            );
-            marker_0c1afc3bdc5840668dfd88de6e3a3f91.setIcon(icon_430001ac2653427b9cf8c97d589b862d);
-        
-    
-        var popup_5ea9b54e797345e3ac0b08d899001872 = L.popup({"maxWidth": 300, "minWidth": 300});
+        var popup_02e9094ae37c4b8e8b3eda080867b698 = L.popup({"maxWidth": 300, "minWidth": 300});
 
         
-            var html_00490f7fc18341e7ac7584287f1a1822 = $(`<div id="html_00490f7fc18341e7ac7584287f1a1822" style="width: 100.0%; height: 100.0%;">Pella se la come</div>`)[0];
-            popup_5ea9b54e797345e3ac0b08d899001872.setContent(html_00490f7fc18341e7ac7584287f1a1822);
+            var html_d1d6572f38ff4e69a761ba1abbb3cf08 = $(`<div id="html_d1d6572f38ff4e69a761ba1abbb3cf08" style="width: 100.0%; height: 100.0%;">Carrerita</div>`)[0];
+            popup_02e9094ae37c4b8e8b3eda080867b698.setContent(html_d1d6572f38ff4e69a761ba1abbb3cf08);
         
 
-        marker_0c1afc3bdc5840668dfd88de6e3a3f91.bindPopup(popup_5ea9b54e797345e3ac0b08d899001872)
+        marker_ed2306d486ca4eb2a68ee3dfc44c203b.bindPopup(popup_02e9094ae37c4b8e8b3eda080867b698)
         ;
 
         
     
     
-            marker_0c1afc3bdc5840668dfd88de6e3a3f91.bindTooltip(
+            marker_ed2306d486ca4eb2a68ee3dfc44c203b.bindTooltip(
                 `<div>
-                     Putas
+                     Carrera
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bfb3d9be48e84b2b87c084a26e6928c9 = L.marker(
+                [-34.097835, -59.020207],
+                {}
+            ).addTo(marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb);
+        
+    
+        var popup_6c001cf2074942e28ad988adfc886c08 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_3ec9984fbca642a8be3f15a69bbbcf1e = $(`<div id="html_3ec9984fbca642a8be3f15a69bbbcf1e" style="width: 100.0%; height: 100.0%;">Rojo</div>`)[0];
+            popup_6c001cf2074942e28ad988adfc886c08.setContent(html_3ec9984fbca642a8be3f15a69bbbcf1e);
+        
+
+        marker_bfb3d9be48e84b2b87c084a26e6928c9.bindPopup(popup_6c001cf2074942e28ad988adfc886c08)
+        ;
+
+        
+    
+    
+            marker_bfb3d9be48e84b2b87c084a26e6928c9.bindTooltip(
+                `<div>
+                     Semaforo
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c823d2c8dd8d45c5855c388748382ab2 = L.marker(
+                [-34.099878, -59.024424],
+                {}
+            ).addTo(marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb);
+        
+    
+        var popup_7da26efe92574bdc9f3f7e095477e21a = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_e0a5cfc1a4d74611a06ff3ed3db1a5cb = $(`<div id="html_e0a5cfc1a4d74611a06ff3ed3db1a5cb" style="width: 100.0%; height: 100.0%;">La Clandes</div>`)[0];
+            popup_7da26efe92574bdc9f3f7e095477e21a.setContent(html_e0a5cfc1a4d74611a06ff3ed3db1a5cb);
+        
+
+        marker_c823d2c8dd8d45c5855c388748382ab2.bindPopup(popup_7da26efe92574bdc9f3f7e095477e21a)
+        ;
+
+        
+    
+    
+            marker_c823d2c8dd8d45c5855c388748382ab2.bindTooltip(
+                `<div>
+                     Fiesta
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_750cecc308ab460385a46f6d8147abf6 = L.marker(
+                [-34.456986, -58.915867],
+                {}
+            ).addTo(marker_cluster_fc40575c2e8f48d9a0f2419740cc33cb);
+        
+    
+        var popup_60369baa0cc14963bbac55043b608ad0 = L.popup({"maxWidth": 300, "minWidth": 300});
+
+        
+            var html_9cc27e1f9fd84153b29bc4603bb945bc = $(`<div id="html_9cc27e1f9fd84153b29bc4603bb945bc" style="width: 100.0%; height: 100.0%;">de chocolate</div>`)[0];
+            popup_60369baa0cc14963bbac55043b608ad0.setContent(html_9cc27e1f9fd84153b29bc4603bb945bc);
+        
+
+        marker_750cecc308ab460385a46f6d8147abf6.bindPopup(popup_60369baa0cc14963bbac55043b608ad0)
+        ;
+
+        
+    
+    
+            marker_750cecc308ab460385a46f6d8147abf6.bindTooltip(
+                `<div>
+                     haciendo galletitas
                  </div>`,
                 {"sticky": true}
             );
