@@ -5,7 +5,7 @@ class eventList:
     
     def __init__(self):
         df = pandas.read_csv(os.path.abspath("marcadores.csv"))
-        seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
+        seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         self.list = [[]]
         a = 0
         for sector in seconddf['Nombre']:
@@ -22,7 +22,7 @@ class eventList:
         del self.list[-1]
 
     def eventCreator(self, zona, nombre, descripcion, latitud, longitud):
-        seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
+        seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         a = 0
         for sector in seconddf['Nombre']:
             if sector == zona:

@@ -14,7 +14,7 @@ from revisionlist import defualt_revision_list
 class MainMenu:
     @staticmethod
     def menu_o():
-        seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
+        seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         try:
             print ('Bienvenido a Eventlt')
             menu_login=int(input('1.Ingresar como Admin | 2.Ingresar como usuario | 3.Ingresar como sensor | ingresar cualquier otro numero para salir:'))
@@ -26,13 +26,13 @@ class MainMenu:
                 MainMenu.menu_login_citizen()
 
             elif menu_login == 3:
-                print('zonas disponibles:')
+                print('Zonas disponibles: ')
                 print(registroDeZonas.listadoZonas(seconddf))
-                num = int(input("elija su zona"))
+                num = int(input("Elija su zona: "))
                 if num <= len(seconddf['Nombre']):
                     new_world.Mapa.show_map(seconddf['Latitud'][num],seconddf['Longitud'][num])
                 else:
-                    print('numero invalido como pella')
+                    print('numero invalido')
                     os.system('cls' if os.name == 'nt' else 'clear')
                     MainMenu.menu_o()
 ############################################################################################################## menu secreto autistico
@@ -217,7 +217,7 @@ class MainMenu:
     @staticmethod
     def menu_citizen(citizenidentifier):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
-        seconddf = pandas.read_csv(os.path.abspath("Eventos.csv"))
+        seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         for a in etlist.citizenlist:
             if int(df['CUIL'][citizenidentifier]) == int(a.CUIL):
                 x = a
