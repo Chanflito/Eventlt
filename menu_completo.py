@@ -5,8 +5,6 @@ import time
 from citizen import ciudadano
 # from listaDeEventos import eventos
 import new_world
-import webbrowser
-import random
 from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
@@ -32,32 +30,12 @@ class MainMenu:
                 num = int(input("Elija su zona: "))
                 if num <= len(seconddf['Nombre']):
                     new_world.Mapa.show_map(seconddf['Latitud'][num],seconddf['Longitud'][num])
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    MainMenu.menu_o()
                 else:
                     print('numero invalido')
                     os.system('cls' if os.name == 'nt' else 'clear')
                     MainMenu.menu_o()
-############################################################################################################## menu secreto autistico
-            elif menu_login == 69 or menu_login == 420:
-                randnum = random.randint(1, 7)
-                if randnum == 1:
-                    webbrowser.open('https://www.youtube.com/watch?v=auVgp3HcYaY')
-                elif randnum == 2:
-                    webbrowser.open('https://www.youtube.com/watch?v=R0lqowYD_Tg')
-                elif randnum == 3:
-                    webbrowser.open('https://www.youtube.com/watch?v=FcZd305VI60')
-                elif randnum == 4:
-                    webbrowser.open('https://www.youtube.com/watch?v=AJ0E87EjU0A')
-                elif randnum == 5:
-                    webbrowser.open('https://www.youtube.com/watch?v=uKxyLmbOc0Q')
-                elif randnum == 6:
-                    webbrowser.open('https://www.youtube.com/watch?v=eaDeTV-LLYA')
-                elif randnum == 7:
-                    webbrowser.open('https://www.youtube.com/watch?v=DAlrY0iZKwQ')
-                elif randnum == 8:
-                    webbrowser.open('https://www.youtube.com/watch?v=OTwJ97Q6EzI')
-                MainMenu.menu_o()
-
-#######################################################################################################################################
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
         except ValueError:
@@ -293,6 +271,7 @@ class menu_administrador():
             latitud = input('latitud: ')
             longitud = input('longitud: ')
             administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
+            return menu_administrador.Bienvenido()
         elif choice == 2:
             return menu_administrador.BanCitizen()
         elif choice == 3:
@@ -354,19 +333,14 @@ class menu_amigos:
         for a in etlist.citizenlist:
             if int(df['CUIL'][user]) == int(a.CUIL):
                 x = a
-        a = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
-        if a == 1:
+        menu_choice = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
+        if menu_choice == 1:
             pass
-        elif a == 2:
+        elif menu_choice == 2:
             pass
-        elif a == 3:
+        elif menu_choice == 3:
             pass
         else:
-            i = 0
-            for a in etlist.citizenlist:
-                if user.CUIL == a.CUIL:
-                    break
-                i += 1
             MainMenu.menu_citizen(user)
 
 class registroDeZonas:
