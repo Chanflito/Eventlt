@@ -29,7 +29,7 @@ class Mapa():
         mapita.save(os.path.abspath("index.html"))
         
         if os.sys.platform == "win32":
-            return os.startfile("index.html") #Open map with Windows System.
+            os.startfile("index.html") #Open map with Windows System.
         else:
             opener = "open" if os.sys.platform == "darwin" else "xdg-open" #Open map wtih OSX system.
-            return subprocess.call([opener, "index.html"])
+            subprocess.call([opener, "index.html"])

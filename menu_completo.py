@@ -14,6 +14,7 @@ from revisionlist import defualt_revision_list
 class MainMenu:
     @staticmethod
     def menu_o():
+        
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         try:
             print ('Bienvenido a Eventlt')
@@ -288,11 +289,10 @@ class menu_administrador():
         if choice == 1:
             zona = input('dime la zona del evento: ')
             nombre = input('titulo de evento: ')
-            descripcion = input('descripcion del evento: ') 
-            latitud = input('latitud: ') 
-            longitud = input('longitud: ') 
+            descripcion = input('descripcion del evento: ')
+            latitud = input('latitud: ')
+            longitud = input('longitud: ')
             administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
-            return menu_administrador.Bienvenido()
         elif choice == 2:
             return menu_administrador.BanCitizen()
         elif choice == 3:
