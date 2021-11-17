@@ -1,7 +1,7 @@
 import folium
 import pandas as pd
 import os
-import sys , subprocess
+import subprocess
 from folium.plugins import MarkerCluster
 from listaDeEventos import eventos
 mc = MarkerCluster()

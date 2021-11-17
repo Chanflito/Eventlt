@@ -3,7 +3,7 @@ import os
 import pandas #se debe descargar esta libreria con pip install pandas en la terminal
 import time
 from citizen import ciudadano
-from listaDeEventos import eventos
+# from listaDeEventos import eventos
 import new_world
 import webbrowser
 import random
