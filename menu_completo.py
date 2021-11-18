@@ -205,6 +205,7 @@ class MainMenu:
     def menu_citizen(citizenidentifier):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
+        from listaDeEventos import eventos as ev
         for a in etlist.citizenlist:
             if int(df['CUIL'][citizenidentifier]) == int(a.CUIL):
                 ciudadanos = a
@@ -219,9 +220,24 @@ class MainMenu:
             os.system('cls' if os.name== 'nt' else 'clear')
             MainMenu.menu_o()
         if c == 1:
-            pass
+            print(ciudadanos.seeEvents(ciudadanos.zone))
+            choice = int(input('a que evento quiere asistir?: '))
+            if choice > (ev.howManyEvents(ciudadanos.zone) - 1) or choice < 0:
+                print('ese numero no es valido')
+                return MainMenu.menu_citizen(citizenidentifier)
+            print(ciudadanos.asistEvent(ciudadanos.zone, choice))
+            return MainMenu.menu_citizen(citizenidentifier)
         elif c == 2:
-            pass
+            if len(ciudadanos.involvedEvents) == 0:
+                print('usted no esta en ningun evento')
+                return MainMenu.menu_citizen(citizenidentifier)
+            print(ciudadanos.seeInvolvedEvents())
+            choice = int(input('a que evento quiere dejar de asistir?: '))
+            if choice > (len(ciudadanos.involvedEvents)-1) or choice < 0:
+                print('ese numero no es valido')
+                return MainMenu.menu_citizen(citizenidentifier)
+            print(ciudadanos.unAsistEvent(ciudadanos.zone, choice))
+            return MainMenu.menu_citizen(citizenidentifier)
         elif c == 3:
             menu_amigos.friends_menu(citizenidentifier)
         elif c == 4:
@@ -266,36 +282,46 @@ class menu_administrador():
     def Bienvenido():
         choice = int(input("Elija una de las siguientes opciones:1-agregar evento| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
         if choice == 1:
-            zona = input('dime la zona del evento: ')
-            nombre = input('titulo de evento: ')
-            descripcion = input('descripcion del evento: ')
-            latitud = input('latitud: ')
-            longitud = input('longitud: ')
-            administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
-            return menu_administrador.Bienvenido()
+            return menu_administrador.admin_addEvent()
         elif choice == 2:
             return menu_administrador.BanCitizen()
         elif choice == 3:
             return menu_administrador.UnBanCitizen()
         elif choice == 4:
             defualt_revision_list.update_revision_list()
-            print(defualt_revision_list.getlist())
-            citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
-            ban_choice = str(input("Quiere bannear al citizen? si/no: "))
-            chosen_citizen=defualt_revision_list.revision_list[citizenindex]
-            if ban_choice=="si":
-                administrator.banCitizen(chosen_citizen)
-                print("El usuario fue banneado")
-                return menu_administrador.Bienvenido()
-            else:
-                defualt_revision_list.removecitizen(chosen_citizen)
-                chosen_citizen.quien_me_rechazo=[]
-                print("El ciudadano fue removido de la lista de revision")
-                return menu_administrador.Bienvenido()
+            return menu_administrador.check_revisionList()
         else:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_o()
+
+    @staticmethod
+    def admin_addEvent():
+        zona = input('dime la zona del evento: ')
+        nombre = input('titulo de evento: ')
+        descripcion = input('descripcion del evento: ')
+        latitud = input('latitud: ')
+        longitud = input('longitud: ')
+        administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
+        return menu_administrador.Bienvenido()
+
+    @staticmethod
+    def check_revisionList():
+        print(defualt_revision_list.getlist())
+        citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
+        ban_choice = str(input("Quiere remover el ban del citizen? si/no: "))
+        chosen_citizen=defualt_revision_list.revision_list[citizenindex]
+        if ban_choice=="si":
+            administrator.unbanCitizen(chosen_citizen)
+            chosen_citizen.quien_me_rechazo = []
+            defualt_revision_list.removecitizen(chosen_citizen)
+            print("El usuario fue des-banneado y removido de la lista de revicion")
+            return menu_administrador.Bienvenido()
+        else:
+            defualt_revision_list.removecitizen(chosen_citizen)
+            chosen_citizen.quien_me_rechazo=[]
+            print("El ciudadano fue removido de la lista de revision y automaticamente fue baneado")
+            return menu_administrador.Bienvenido()
 
     @staticmethod
     def BanCitizen():
@@ -324,6 +350,7 @@ class menu_administrador():
         for citizen in etlist.citizenlist:
             if len(citizen.quien_me_rechazo)==5:
                 cls.revisionlist.append(citizen)
+                administrator.banCitizen(citizen)
 
 
 class menu_amigos:
@@ -331,15 +358,23 @@ class menu_amigos:
     @staticmethod
     def friends_menu(user):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
-        for a in etlist.citizenlist:
-            if int(df['CUIL'][user]) == int(a.CUIL):
-                x = a
-        menu_choice = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
+        for ciudadanos in etlist.citizenlist:
+            if int(df['CUIL'][user]) == int(ciudadanos.CUIL):
+                x = ciudadanos
+        menu_choice = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver eventos de contactos | Volver menu"))
         if menu_choice == 1:
             print(x.ver_solicitudes())
-            solicitud_choice = input('dime el numero de el que quieres agregar: ')
-            print(x.aceptar_solicitud(solicitud_choice))
-            return menu_amigos.friends_menu(user)
+            acciones_disponibles = int(input('1.Aceptar una solicitud | 2.Rechazar una solicitud '))
+            if acciones_disponibles == 1:
+                solicitud_choice = input('dime el numero de el que quieres agregar: ')
+                print(x.aceptar_solicitud(solicitud_choice))
+                return menu_amigos.friends_menu(user)
+            elif acciones_disponibles == 2:
+                solicitud_choice = input('dime el numero de el que quieres rechazar: ')
+                print(x.aceptar_solicitud(solicitud_choice))
+                return menu_amigos.friends_menu(user)
+            else:
+                return menu_amigos.friends_menu(user)
         elif menu_choice == 2:
             friend_cuil = int(input("dime el cuil de tu amigo"))
             print(x.enviar_solicitud(friend_cuil))
@@ -348,8 +383,19 @@ class menu_amigos:
             if len(x.friends) == 0:
                 print('usted no tiene amigos')
                 return menu_amigos.friends_menu(user)
+            num = 0
             for friend in x.friends:
-                print(f"{friend.name} {friend.lastName} | {friend.CUIL}")
+                print(f"{num} | {friend.name} {friend.lastName} | {friend.CUIL}")
+                num += 1
+            choice = int(input('de cual contacto quiere ver?: '))
+            if choice > (len(x.friends)-1) or choice < 0:
+                print('numero invalido')
+                return menu_amigos.friends_menu(user)
+            elif len(x.friends[choice].involvedEvents) == 0:
+                print('su amigo no tiene eventos puestos')
+                return menu_amigos.friends_menu(user)
+            for eventos in x.friends[choice].involvedEvents:
+                print(eventos)
             return menu_amigos.friends_menu(user)
         else:
             MainMenu.menu_citizen(user)

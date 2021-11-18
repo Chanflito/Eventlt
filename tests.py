@@ -8,7 +8,7 @@ from citizen import ciudadano
 import new_world
 import webbrowser
 import random
-from listadeCuidadanos import CitizenList
+from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
 
@@ -112,7 +112,7 @@ class FakeMainMenu: #A diferencia de la clase original FakeMainMenu es inicializ
                 writer = csv.writer(h, delimiter=",")
                 writer.writerow([user_cuil, password, phone_number, name, surname, age])
             ciudadano.create_citizen(name, surname, age, user_cuil, phone_number)
-            print(fakeetlist.getcl())
+            print(etlist.getcl())
             # print("Su clase citizen fue creada exitosamente")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -193,7 +193,7 @@ class FakeMainMenu: #A diferencia de la clase original FakeMainMenu es inicializ
     def menu_citizen(self,citizenidentifier,console):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
-        for a in fakeetlist.citizenlist:
+        for a in etlist.citizenlist:
             if int(df['CUIL'][citizenidentifier]) == int(a.CUIL):
                 x = a
         if x.zone == -1:
@@ -260,8 +260,7 @@ class FakemenuAdministrador():
     revisionlist = []
 
     def Bienvenido(self,console):
-        choice = int(console.input(
-            "Elija una de las siguientes opciones:1-agregar evento| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
+        choice = int(console.input("Elija una de las siguientes opciones:1-agregar evento| 2-Bannear| 3-remover Ban| 4-Ver lista de revisión: "))
         if choice == 1:
             zona = console.input('dime la zona del evento: ')
             nombre = console.input('titulo de evento: ')
@@ -285,17 +284,17 @@ class FakemenuAdministrador():
 
     def BanCitizen(self,console):
         usuarioseleccionado = int(console.input("A quien desea bannear? "))
-        for usuarios in fakeetlist.citizenlist:
+        for usuarios in etlist.citizenlist:
             if usuarios.CUIL == usuarioseleccionado and usuarios.citizenBan == False:
                 administrator.banCitizen(usuarios)
                 print(f"el usuario con CUIL {usuarioseleccionado} fue banneado")
-                return self.Bienvenido(console)
+                return 0 #FakeadminMenu no vuelve a bienvenido
         print("Usuario no encontrado")
-        return self.Bienvenido(console)
+        return 0 #FakeadminMenu no vuelve a bienvenido
 
     def UnBanCitizen(self,console):
         usuarioseleccionado = int(console.input("A quien desea remover el ban? CUIL: "))
-        for users in fakeetlist.BannedCitizenList:
+        for users in etlist.BannedCitizenList:
             if users.CUIL == usuarioseleccionado:
                 administrator.unbanCitizen(users)
                 print(f"se removio el ban de la persona con el CUIL: {usuarioseleccionado}")
@@ -321,7 +320,7 @@ class FakemenuAdministrador():
 
     @classmethod
     def update_revision_list(cls):
-        for citizen in fakeetlist.citizenlist:
+        for citizen in etlist.citizenlist:
             if len(citizen.quien_me_rechazo) == 5:
                 cls.revisionlist.append(citizen)
 
@@ -331,7 +330,7 @@ class FakeMenuAmigos:
     @staticmethod
     def friends_menu(user,console):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
-        for a in fakeetlist.citizenlist:
+        for a in etlist.citizenlist:
             if int(df['CUIL'][user]) == int(a.CUIL):
                 x = a
         a = int(console.input(
@@ -344,7 +343,7 @@ class FakeMenuAmigos:
             pass
         else:
             i = 0
-            for a in fakeetlist.citizenlist:
+            for a in etlist.citizenlist:
                 if user.CUIL == a.CUIL:
                     break
                 i += 1
@@ -379,20 +378,18 @@ class FakeConsole():
 #         console=FakeConsole(["2","2","91121616818","11111111112","Valen","Valen","Valen","Di Capua","19"])
 #         fake_main_menu_test1=FakeMainMenu()
 #         fake_main_menu_test1.menu_o(console)
-#         result=len(fakeetlist.citizenlist)
-#         print(fakeetlist.citizenlist)
+#         result=len(etlist.citizenlist)
+#         print(etlist.citizenlist)
 
 class TestmenuAdministrador(unittest.TestCase):
     def test_ban_citizen(self):
 
         fake_admin_menu_test1=FakemenuAdministrador()
-        console=FakeConsole(["11111111111","5"])
+        console=FakeConsole(["12345678910"])
         fake_admin_menu_test1.BanCitizen(console)
-        result=len(fakeetlist.BannedCitizenList)
+        result=len(etlist.BannedCitizenList)
         self.assertEqual(result,1)
 
-fakeetlist=CitizenList()
-print(fakeetlist.citizenlist)
 
 if __name__=="__main__":
     unittest.main()
