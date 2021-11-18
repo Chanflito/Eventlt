@@ -1,5 +1,5 @@
 import os, csv, pandas
-from creadorDeEventos import EventType
+from Evento import EventType
 
 class eventList:
     
