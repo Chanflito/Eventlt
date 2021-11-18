@@ -8,14 +8,14 @@ class administrator():
 
     @classmethod
     def addEvent(cls, location, nombre, descripcion, latitud, longitud):
-        print(eventos.eventCreator(location, nombre, descripcion, latitud, longitud))
+        return eventos.eventCreator(location, nombre, descripcion, latitud, longitud)
 
     @staticmethod
     def banCitizen(citizen):
-        citizen.citizenBan=True
+        citizen.citizenBan = True
         etlist.addBannedCitizen(citizen)
         
     @staticmethod
     def unbanCitizen(citizen):
-        citizen.citizenBan=False
+        citizen.citizenBan = False
         etlist.removeBannedCitizen(citizen)
