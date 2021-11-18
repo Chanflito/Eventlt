@@ -9,6 +9,7 @@ from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
 from tablero_estadistica import Estadisticas
+from registrodezonas import registroDeZonas
 class MainMenu:
     @staticmethod
     def menu_o():
@@ -400,14 +401,3 @@ class menu_amigos:
             return menu_amigos.friends_menu(user)
         else:
             MainMenu.menu_citizen(user)
-
-class registroDeZonas:
-
-    @staticmethod
-    def listadoZonas(eventos):  
-        zonitas = ''
-        i = 0 
-        for zona in eventos['Nombre']:
-            zonitas += f'{i} |' + zona + '\n'
-            i += 1
-        return zonitas
