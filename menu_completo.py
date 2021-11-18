@@ -307,6 +307,8 @@ class menu_administrador():
     @staticmethod
     def check_revisionList():
         print(defualt_revision_list.getlist())
+        for citizens in defualt_revision_list.revision_list():
+            administrador.banCitizen(citizens)
         citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
         ban_choice = str(input("Quiere remover el ban del citizen? si/no: "))
         chosen_citizen=defualt_revision_list.revision_list[citizenindex]
