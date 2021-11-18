@@ -25,12 +25,50 @@ class ciudadano(user):
         x = ciudadano(name, lastName, age, CUIL, phoneNumber, zone)
         return x
 
-    def asistEvent(self):
-        pass
+    def asistEvent(self, zone, num):
+        from listaDeEventos import eventos as ev
+        for people in ev.list[zone][num].listOfPeople:
+            if people == self:
+                return 'ested ya esta en este evento'
+        self.involvedEvents.append(ev.list[zone][num])
+        ev.list[zone][num].peopleQuantity += 1
+        ev.list[zone][num].listOfPeople.append(self)
+        print(ev.list[zone][num].listOfPeople)
+        print(ev.list[zone][num].peopleQuantity)
+        return f'usted se registro para el evento {ev.list[zone][num].titulo} correctamente'
 
-    def unAsistEvent(self):
-        pass 
-    
+    def unAsistEvent(self, zone, num):
+        if len(self.involvedEvents) == 0:
+            return 'usted no esta en ningun evento'
+        from listaDeEventos import eventos as ev
+        del self.involvedEvents[num]
+        ev.list[zone][num].peopleQuantity -= 1
+        posicion = 0
+        for usted in ev.list[zone][num].listOfPeople:
+            if usted == self:
+                del ev.list[zone][num].listOfPeople[posicion]
+            else:
+                posicion += 1
+        print(ev.list[zone][num].peopleQuantity)
+        return f'usted se removio del evento {ev.list[zone][num].titulo} correctamente'
+
+    def seeEvents(self, zone):
+        from listaDeEventos import eventos as ev
+        num = 0
+        texto = ''
+        for events in ev.list[zone]:
+            texto += f'{num} | {events.titulo}:\n{events.description}\n'
+            num += 1
+        return texto
+
+    def seeInvolvedEvents(self):
+        texto = ''
+        num = 0
+        for events in self.involvedEvents:
+            texto += f'{num} | {events.titulo}\n'
+            num += 1
+        return texto
+
     def enviar_solicitud(self, friend_cuil):
         from listadeCuidadanos import etlist
         Check_cuil=False
@@ -73,6 +111,7 @@ class ciudadano(user):
         elif idem < 0:
             return "ese es un numero negativo"
         self.friends.append(self.solicitudes[idem])
+        self.solicitudes[idem].friends.append(self)
         del self.solicitudes[idem]
         return f'se agrego a {self.friends[-1].name} {self.friends[-1].lastName} (cuil: {self.friends[-1].CUIL}) correctamente'
         

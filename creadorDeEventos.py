@@ -1,12 +1,10 @@
 class EventType:
-    def __init__(self, description, location):
+    def __init__(self, titulo, description, location):
+        self.titulo = titulo
         self.description = description
         self.location = location
         self.peopleQuantity = 0
         self.listOfPeople = []
 
-    def getDescrition(self):
-        return self.description
-
-    def getLocation(self):
-        return self.location
+    def getPeople(self):
+        return self.peopleQuantity
