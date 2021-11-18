@@ -276,7 +276,6 @@ class MainMenu:
             MainMenu.menu_o()
 
 class menu_administrador():
-    revisionlist=[]
 
     @staticmethod
     def Bienvenido():
@@ -345,12 +344,6 @@ class menu_administrador():
         print("Usuario no encontrado")
         return menu_administrador.Bienvenido()
 
-    @classmethod
-    def update_revision_list(cls):
-        for citizen in etlist.citizenlist:
-            if len(citizen.quien_me_rechazo)==5:
-                cls.revisionlist.append(citizen)
-                administrator.banCitizen(citizen)
 
 
 class menu_amigos:
