@@ -57,13 +57,11 @@ class MainMenu:
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_login_citizen()
         
-        number = 0
-        for a in anses:
-            if int(phone_number) == (a['Telefono']):
-                pass
-            else:
-                number += 1
-        if number > len(anses['Telefono']):
+        checkIfExist = False
+        for a in anses['Telefono']:
+            if int(phone_number) == int(a):
+                checkIfExist = True
+        if checkIfExist == False:
             print('su telefono no esta en el dataset del anses')
             return MainMenu.menu_o()
 
@@ -77,16 +75,13 @@ class MainMenu:
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_login_citizen()
 
-        if user_cuil in anses["CUIL"] == True:
-            pass
-        else:
-            try:
-                raise ValueError
-            except ValueError:
-                print("El CUIL ingresado debe estar registrado en la base de datos del Anses")
-                time.sleep(3)
-                os.system('cls' if os.name == 'nt' else 'clear')
-                MainMenu.menu_login_citizen()
+        checkIfExist = False
+        for a in anses['CUIL']:
+            if int(user_cuil) == int(a):
+                checkIfExist = True
+        if checkIfExist == False:
+            print('su cuil no esta en el dataset del anses')
+            return MainMenu.menu_o()
 
 
         df = pandas.read_csv(os.path.abspath("Database.csv"))
