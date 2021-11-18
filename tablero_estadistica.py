@@ -7,9 +7,10 @@ import os
 import pandas as pd
 import listaDeEventos
 from matplotlib import pyplot
+import Evento
 # df=pd.read_csv("Estadisticas.csv")
 # print (df.info())
-pyplot.title("Cantidad de eventos por ciudad")
+pyplot.title("Cantidad de personas por zona")
 pyplot.xlabel("Zonas",labelpad=6)
 pyplot.ylabel("Personas",labelpad=6)
 df = pandas.read_csv(os.path.abspath("Database.csv"))
@@ -38,18 +39,18 @@ for sector in seconddf['Nombre']:
     new.append(len(p_x_zona[a]))
     a += 1
     p_x_zona.append([]) 
-print (listaDeEventos.eventos.list)
 
-# def valores_maximos():
-#           counter=0
-#           maximos_lluvia=sorted(.valores_lluvia_alarma, reverse=True)
-#           Lista_maximos_3_lluvia=[]
-#           for i in maximos_lluvia:
-#                counter+=1
-#                if counter!=4:
-#                     Lista_maximos_3_lluvia.append(i[0])
-#                else:
-#                     break
-#           return f' '
+
+
+for events in listaDeEventos.eventos.list[2]:
+    print(len(events.listOfPeople))
+print (listaDeEventos.eventos.list)
+# for event in listaDeEventos.eventos.list[0]:
+    # print(event)
+
+
+# print (listaDeEventos.eventos.list)
+
+
 # pyplot.bar(zonas,new)
 # pyplot.show()

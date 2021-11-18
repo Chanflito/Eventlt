@@ -8,7 +8,6 @@ import new_world
 from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
-from tablero_estadistica import Estadisticas
 class MainMenu:
     @staticmethod
     def menu_o():
@@ -44,7 +43,9 @@ class MainMenu:
             MainMenu.menu_o()
 
     @staticmethod
+    
     def register():
+        anses = pandas.read_csv(os.path.abspath("DatasetAnses.csv"))
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         phone_number=input("Ingrese su numero telefonico: (+54) ")
         try:
@@ -53,8 +54,19 @@ class MainMenu:
             print("Debe ingresar su numero telefonico correctamente")
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
-
             MainMenu.menu_login_citizen()
+        
+        number = 0
+        for a in anses:
+            if int(phone_number) == (a['Telefono']):
+                pass
+            else:
+                number += 1
+        if number > len(anses['Telefono']):
+            print('su telefono no esta en el dataset del anses')
+            return MainMenu.menu_o()
+
+                 
         user_cuil = input("Ingrese su CUIL: ")
         try:
             int(user_cuil)
@@ -63,6 +75,18 @@ class MainMenu:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_login_citizen()
+
+        if user_cuil in anses["CUIL"] == True:
+            pass
+        else:
+            try:
+                raise ValueError
+            except ValueError:
+                print("El CUIL ingresado debe estar registrado en la base de datos del Anses")
+                time.sleep(3)
+                os.system('cls' if os.name == 'nt' else 'clear')
+                MainMenu.menu_login_citizen()
+
 
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         for numbers in df['Phonenumber']:
