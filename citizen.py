@@ -61,7 +61,7 @@ class ciudadano(user):
         for solicitudes in self.solicitudes:
             print(f'{i}| nombre: {solicitudes.name} | cuil: {solicitudes.CUIL}\n')
             i += 1
-        return 'para seleccionar un amigo, por favor ponga el numero correspondiente en la pestaña "aceptar_solicitud" o "rechazar solicitud'
+        return ''
         
 
     def aceptar_solicitud(self, idem):

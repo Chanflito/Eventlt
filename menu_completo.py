@@ -279,23 +279,27 @@ class menu_administrador():
             return menu_administrador.UnBanCitizen()
         elif choice == 4:
             defualt_revision_list.update_revision_list()
-            print(defualt_revision_list.getlist())
-            citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
-            ban_choice = str(input("Quiere bannear al citizen? si/no: "))
-            chosen_citizen=defualt_revision_list.revision_list[citizenindex]
-            if ban_choice=="si":
-                administrator.banCitizen(chosen_citizen)
-                print("El usuario fue banneado")
-                return menu_administrador.Bienvenido()
-            else:
-                defualt_revision_list.removecitizen(chosen_citizen)
-                chosen_citizen.quien_me_rechazo=[]
-                print("El ciudadano fue removido de la lista de revision")
-                return menu_administrador.Bienvenido()
+            return menu_administrador.check_revisionList()
         else:
             time.sleep(3)
             os.system('cls' if os.name == 'nt' else 'clear')
             MainMenu.menu_o()
+
+    @staticmethod
+    def check_revisionList():
+        print(defualt_revision_list.getlist())
+        citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
+        ban_choice = str(input("Quiere remover el ban del citizen? si/no: "))
+        chosen_citizen=defualt_revision_list.revision_list[citizenindex]
+        if ban_choice=="si":
+            administrator.unbanCitizen(chosen_citizen)
+            print("El usuario fue des-banneado")
+            return menu_administrador.Bienvenido()
+        else:
+            defualt_revision_list.removecitizen(chosen_citizen)
+            chosen_citizen.quien_me_rechazo=[]
+            print("El ciudadano fue removido de la lista de revision y automaticamente fue baneado")
+            return menu_administrador.Bienvenido()
 
     @staticmethod
     def BanCitizen():
@@ -324,6 +328,7 @@ class menu_administrador():
         for citizen in etlist.citizenlist:
             if len(citizen.quien_me_rechazo)==5:
                 cls.revisionlist.append(citizen)
+                administrator.banCitizen(citizen)
 
 
 class menu_amigos:
@@ -331,15 +336,23 @@ class menu_amigos:
     @staticmethod
     def friends_menu(user):
         df = pandas.read_csv(os.path.abspath("Database.csv"))
-        for a in etlist.citizenlist:
-            if int(df['CUIL'][user]) == int(a.CUIL):
-                x = a
+        for ciudadanos in etlist.citizenlist:
+            if int(df['CUIL'][user]) == int(ciudadanos.CUIL):
+                x = ciudadanos
         menu_choice = int(input(f"{x.name}, bienvenido a sus contactos:\n\n1.Ver solicitudes | 2.Enviar solicitud | 3.Ver contactos | Volver menu"))
         if menu_choice == 1:
             print(x.ver_solicitudes())
-            solicitud_choice = input('dime el numero de el que quieres agregar: ')
-            print(x.aceptar_solicitud(solicitud_choice))
-            return menu_amigos.friends_menu(user)
+            acciones_disponibles = int(input('1.Aceptar una solicitud | 2.Rechazar una solicitud '))
+            if acciones_disponibles == 1:
+                solicitud_choice = input('dime el numero de el que quieres agregar: ')
+                print(x.aceptar_solicitud(solicitud_choice))
+                return menu_amigos.friends_menu(user)
+            elif acciones_disponibles == 2:
+                solicitud_choice = input('dime el numero de el que quieres rechazar: ')
+                print(x.aceptar_solicitud(solicitud_choice))
+                return menu_amigos.friends_menu(user)
+            else:
+                return menu_amigos.friends_menu(user)
         elif menu_choice == 2:
             friend_cuil = int(input("dime el cuil de tu amigo"))
             print(x.enviar_solicitud(friend_cuil))

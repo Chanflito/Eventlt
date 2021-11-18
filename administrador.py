@@ -8,7 +8,7 @@ class administrator():
 
     @classmethod
     def addEvent(cls, location, nombre, descripcion, latitud, longitud):
-        print(eventos.eventCreator(location, nombre, descripcion, latitud, longitud))
+        return eventos.eventCreator(location, nombre, descripcion, latitud, longitud)
 
     @staticmethod
     def banCitizen(citizen):
