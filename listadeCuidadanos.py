@@ -10,7 +10,7 @@ class CitizenList():
         df = pandas.read_csv(os.path.abspath("Database.csv"))
         i = 0
         while i != len(df['CUIL']):
-            self.citizenlist.append(creadordeciudadano.init_citizen_creation(df['Name'][i], df['Surname'][i], df['age'][i], df['CUIL'][i], df['Phonenumber'][i]))
+            self.citizenlist.append(creadordeciudadano.init_citizen_creation(df['Name'][i], df['Surname'][i], df['age'][i], df['CUIL'][i], df['Phonenumber'][i], df['Zona'][i]))
             i += 1
             
     def addCitizen(self, citizen):

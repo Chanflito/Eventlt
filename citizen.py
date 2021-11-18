@@ -1,10 +1,10 @@
 from usuario import usuario as user
 
 class ciudadano(user):
-    def __init__(self, name, lastName, age, CUIL, phoneNumber):
+    def __init__(self, name, lastName, age, CUIL, phoneNumber, zone):
         super().__init__(name, lastName, age, CUIL)
         self.phoneNumber = phoneNumber
-        self.zone = -1
+        self.zone = zone
         self.involvedEvents = []
         self.citizenBan = False
         self.friends=[]
@@ -15,14 +15,14 @@ class ciudadano(user):
         return self.name + " " + self.lastName
     
     @classmethod
-    def create_citizen(cls, name, lastName, age, CUIL, phoneNumber):
+    def create_citizen(cls, name, lastName, age, CUIL, phoneNumber, zone):
         from listadeCuidadanos import etlist
-        x = ciudadano(name, lastName, age, CUIL, phoneNumber)
+        x = ciudadano(name, lastName, age, CUIL, phoneNumber, zone)
         etlist.addCitizen(x)
 
     @classmethod
-    def init_citizen_creation(cls, name, lastName, age, CUIL, phoneNumber):
-        x = ciudadano(name, lastName, age, CUIL, phoneNumber)
+    def init_citizen_creation(cls, name, lastName, age, CUIL, phoneNumber, zone):
+        x = ciudadano(name, lastName, age, CUIL, phoneNumber, zone)
         return x
 
     def asistEvent(self):

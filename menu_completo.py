@@ -45,6 +45,7 @@ class MainMenu:
 
     @staticmethod
     def register():
+        seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         phone_number=input("Ingrese su numero telefonico: (+54) ")
         try:
             int(phone_number)
@@ -107,13 +108,20 @@ class MainMenu:
             int(age)
         except ValueError:
             print("Usted ha ingresado un caracter invalido, intentelo nuevamente")
-
+        print('en que zona esta?')
+        print(registroDeZonas.listadoZonas(seconddf))
+        zona_user = int(input('respuesta: '))
+        if zona_user > (len(seconddf['Nombre']) - 1):
+            print('este numero no es valido')
+            time.sleep(3)
+            os.system('cls' if os.name == 'nt' else 'clear')
+            return MainMenu.menu_o
 
         if counter == 11 and password == password1 and counter2==11:
             with open(os.path.abspath("Database.csv"),mode="a",newline="") as h:
                 writer=csv.writer(h,delimiter=",")
-                writer.writerow([user_cuil,password,phone_number,name,surname,age])
-            ciudadano.create_citizen(name,surname,age, user_cuil,phone_number)
+                writer.writerow([user_cuil,password,phone_number,name,surname,age,zona_user])
+            ciudadano.create_citizen(name,surname,age, user_cuil,phone_number,zona_user)
             print(etlist.getcl())
             # print("Su clase citizen fue creada exitosamente")
             time.sleep(3)
@@ -203,18 +211,6 @@ class MainMenu:
         if ciudadanos.citizenBan == True:    # si la cuenta esta baneada no pasa
             print('su cuenta esta bloqueada, no puede ingresar')
             return MainMenu.menu_o
-        if ciudadanos.zone == -1:
-            b = int(input(f'bienvenido al menu_citizen por primera vez, {ciudadanos.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
-            if b > (len(seconddf['Nombre']) - 1):
-                print('este numero no es valido, vuelva a intentarlo')
-                time.sleep(3)
-                os.system('cls' if os.name == 'nt' else 'clear')
-                MainMenu.menu_citizen(citizenidentifier)
-            else:
-                print('muchas gracias!')
-                time.sleep(3)
-                os.system('cls' if os.name == 'nt' else 'clear')
-            ciudadanos.zone = b
         try:
             c = int(input(f'{ciudadanos.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona: ')) # SOLO PUEDE SER UN NUMERO
         except ValueError:
@@ -349,6 +345,9 @@ class menu_amigos:
             print(x.enviar_solicitud(friend_cuil))
             return menu_amigos.friends_menu(user)
         elif menu_choice == 3:
+            if len(x.friends) == 0:
+                print('usted no tiene amigos')
+                return menu_amigos.friends_menu(user)
             for friend in x.friends:
                 print(f"{friend.name} {friend.lastName} | {friend.CUIL}")
             return menu_amigos.friends_menu(user)
