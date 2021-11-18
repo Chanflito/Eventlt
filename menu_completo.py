@@ -199,9 +199,12 @@ class MainMenu:
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         for a in etlist.citizenlist:
             if int(df['CUIL'][citizenidentifier]) == int(a.CUIL):
-                x = a
-        if x.zone == -1:
-            b = int(input(f'bienvenido al menu_citizen por primera vez, {x.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
+                ciudadanos = a
+        if ciudadanos.citizenBan == True:    # si la cuenta esta baneada no pasa
+            print('su cuenta esta bloqueada, no puede ingresar')
+            return MainMenu.menu_o
+        if ciudadanos.zone == -1:
+            b = int(input(f'bienvenido al menu_citizen por primera vez, {ciudadanos.name}!\n\nPorfavor, ingrese el numero respectivo a su zona:\n{registroDeZonas.listadoZonas(seconddf)}')) # SOLO PUEDE SER UN NUMERO
             if b > (len(seconddf['Nombre']) - 1):
                 print('este numero no es valido, vuelva a intentarlo')
                 time.sleep(3)
@@ -211,9 +214,9 @@ class MainMenu:
                 print('muchas gracias!')
                 time.sleep(3)
                 os.system('cls' if os.name == 'nt' else 'clear')
-            x.zone = b
+            ciudadanos.zone = b
         try:
-            c = int(input(f'{x.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona: ')) # SOLO PUEDE SER UN NUMERO
+            c = int(input(f'{ciudadanos.name}, elija lo que quiere hacer:\n\n1.asistir a evento | 2.dejar de asistir a evento | 3.menu de amigos | 4.cambiar zona: ')) # SOLO PUEDE SER UN NUMERO
         except ValueError:
             print ('Debe ingresar un numero')
             time.sleep(3)
@@ -229,7 +232,7 @@ class MainMenu:
             registroDeZonas.listadoZonas(seconddf)
             print(registroDeZonas.listadoZonas(seconddf))
             num = int(input("a que zona quiere cambiar?\n"))
-            x.change_zone(num)
+            ciudadanos.change_zone(num)
             print('su zona se actualizo correctamente')
             MainMenu.menu_citizen(citizenidentifier)
         else:
