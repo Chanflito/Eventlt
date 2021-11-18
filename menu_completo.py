@@ -8,7 +8,7 @@ import new_world
 from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
-
+from tablero_estadistica import Estadisticas
 class MainMenu:
     @staticmethod
     def menu_o():
@@ -276,6 +276,7 @@ class MainMenu:
             MainMenu.menu_o()
 
 class menu_administrador():
+    revisionlist=[]
 
     @staticmethod
     def Bienvenido():
@@ -302,13 +303,12 @@ class menu_administrador():
         latitud = input('latitud: ')
         longitud = input('longitud: ')
         administrator.addEvent(zona, nombre, descripcion, latitud, longitud )
+        print ('El evento fue creado exitosamente.')
         return menu_administrador.Bienvenido()
 
     @staticmethod
     def check_revisionList():
         print(defualt_revision_list.getlist())
-        for citizens in defualt_revision_list.revision_list():
-            administrador.banCitizen(citizens)
         citizenindex=int(input("seleccione la posicion del ciudadano al que quiere revisar (empezando desde el 0): "))
         ban_choice = str(input("Quiere remover el ban del citizen? si/no: "))
         chosen_citizen=defualt_revision_list.revision_list[citizenindex]
@@ -346,6 +346,12 @@ class menu_administrador():
         print("Usuario no encontrado")
         return menu_administrador.Bienvenido()
 
+    @classmethod
+    def update_revision_list(cls):
+        for citizen in etlist.citizenlist:
+            if len(citizen.quien_me_rechazo)==5:
+                cls.revisionlist.append(citizen)
+                administrator.banCitizen(citizen)
 
 
 class menu_amigos:
