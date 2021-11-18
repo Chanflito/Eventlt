@@ -12,10 +12,10 @@ class administrator():
 
     @staticmethod
     def banCitizen(citizen):
-        citizen.citizenBan=True
+        citizen.citizenBan = True
         etlist.addBannedCitizen(citizen)
         
     @staticmethod
     def unbanCitizen(citizen):
-        citizen.citizenBan=False
+        citizen.citizenBan = False
         etlist.removeBannedCitizen(citizen)
