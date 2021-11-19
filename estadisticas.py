@@ -53,5 +53,6 @@ class Stats_Board:
         texto = ''
         i = 1
         for eventitos in lista:
-            texto += f'{i} | {eventitos[0]}: {eventitos[1]}.'
+            texto += f'{i} | {eventitos[0]}: {eventitos[1]}.\n'
+            i += 1
         print(texto) 
