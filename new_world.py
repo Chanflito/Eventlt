@@ -13,7 +13,7 @@ class Mapa():
     @staticmethod
     def show_map (lat, lon):
         
-        mapita = folium.Map(location=[lat,lon], tiles="cartodbpositron", zoom_start=15)
+        mapita = folium.Map(location=[lat,lon], tiles="cartodbpositron", zoom_start=13)
         for _, marcador in df_marcador.iterrows():
             mc.add_child(folium.Marker(location=[float(marcador["Latitud"]), float(marcador["Longitud"])],
             tooltip=(marcador["Nombre"]), popup = folium.Popup( marcador["Descripcion"], min_width=300, max_width=300)))
