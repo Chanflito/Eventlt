@@ -9,10 +9,10 @@ from listadeCuidadanos import etlist
 from administrador import administrator
 from revisionlist import defualt_revision_list
 from registrodezonas import registroDeZonas
+from estadisticas import Stats_Board
 class MainMenu:
     @staticmethod
     def menu_o():
-        
         seconddf = pandas.read_csv(os.path.abspath("zona.csv"))
         try:
             print ('Bienvenido a Eventlt')
@@ -25,17 +25,22 @@ class MainMenu:
                 MainMenu.menu_login_citizen()
 
             elif menu_login == 3:
-                print('Zonas disponibles: ')
-                print(registroDeZonas.listadoZonas(seconddf))
-                num = int(input("Elija su zona: "))
-                if num <= len(seconddf['Nombre']):
-                    new_world.Mapa.show_map(seconddf['Latitud'][num],seconddf['Longitud'][num])
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    MainMenu.menu_o()
-                else:
-                    print('numero invalido')
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    MainMenu.menu_o()
+                print ('Bienvenido al menu sensor')
+                acceso=int(input('1.Acceder a estadisticas | 2.Acceder a mapa'))
+                if acceso==2:
+                    sensor.acces_map()
+                elif acceso==1:
+                    acceso_stats=int(input('1.Acceder historial de valores maximos de concurrencia | 2.Visualizar grafico de personas por zona'))
+                    if acceso_stats ==1:
+                        print(registroDeZonas.listadoZonas(seconddf))
+                        acces_max=int(input('Ingrese la zona que desea acceder para visualizar los valores maximos por ocurrencia.'))
+                        Stats_Board.showMaxZone(acces_max)
+                    elif acceso_stats==2:
+                        Stats_Board.show_p_per_zone(Stats_Board)
+                    else:
+                        print ('Numero invalido')
+                        time.sleep(3)
+                        os.system('cls' if os.name == 'nt' else 'clear')
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
         except ValueError:
@@ -420,3 +425,17 @@ class menu_amigos:
             return menu_amigos.friends_menu(user)
         else:
             MainMenu.menu_citizen(user)
+
+class sensor:
+    @staticmethod
+    def acces_map():
+        a = pandas.read_csv(os.path.abspath("zona.csv"))
+        print('Zonas disponibles: ')
+        print(registroDeZonas.listadoZonas(a))
+        num = int(input("Elija su zona: "))
+        if num <= len(a['Nombre']):
+                new_world.Mapa.show_map(a['Latitud'][num],a['Longitud'][num])
+                os.system('cls' if os.name == 'nt' else 'clear')
+        else:
+            print('numero invalido')
+            os.system('cls' if os.name == 'nt' else 'clear')

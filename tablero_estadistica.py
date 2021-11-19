@@ -4,10 +4,9 @@
 import csv
 import pandas
 import os
-import pandas as pd
-import listaDeEventos
+from listaDeEventos import eventos
 from matplotlib import pyplot
-import Evento
+
 # df=pd.read_csv("Estadisticas.csv")
 # print (df.info())
 pyplot.title("Cantidad de personas por zona")
@@ -42,15 +41,17 @@ for sector in seconddf['Nombre']:
 
 
 
-for events in listaDeEventos.eventos.list[2]:
-    print(len(events.listOfPeople))
-print (listaDeEventos.eventos.list)
-# for event in listaDeEventos.eventos.list[0]:
-    # print(event)
+# for events in eventos.list[2]:
+#     print(len(events.listOfPeople))
 
+# print (eventos.list)
+# # for event in listaDeEventos.eventos.list[0]:
+#     # print(event)
 
+# print (p_x_zona)
 # print (listaDeEventos.eventos.list)
 
 
-# pyplot.bar(zonas,new)
-# pyplot.show()
+pyplot.bar(zonas,new)
+pyplot.show()
+

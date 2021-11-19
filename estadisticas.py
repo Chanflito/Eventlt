@@ -2,8 +2,9 @@ import csv
 import pandas
 import os
 import pandas as pd
-import listaDeEventos
+from listaDeEventos import eventos
 from matplotlib import pyplot
+
 
 
 class Stats_Board:
@@ -38,7 +39,19 @@ class Stats_Board:
             p_x_zona.append([]) 
         pyplot.bar(zonas,new)
         pyplot.show()
-
-    def top_per_zone(self):
-        pass
-
+    
+    @staticmethod
+    def showMaxZone(num):
+        df2 = pandas.read_csv(os.path.abspath("zona.csv"))
+        if num > len(df2["Nombre"])-1 or num < 0:
+            return 'el numero ingresado es invalido'
+        lista = []
+        for e in eventos.list[num]:
+            lista.append([e.titulo, e.getPeople()])
+        lista.sort(reverse=True)
+        lista = lista[:3]
+        texto = ''
+        i = 1
+        for eventitos in lista:
+            texto += f'{i} | {eventitos[0]}: {eventitos[1]}.'
+        print(texto) 
